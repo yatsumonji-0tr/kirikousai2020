@@ -312,7 +312,58 @@
     background:#fff; border:1px solid rgba(18,21,28,0.1);
     display:flex; align-items:center; justify-content:center;
     font-size:10.5px; color:var(--ink-soft); font-weight:700;
+    cursor:pointer; transition:transform .12s ease, box-shadow .12s ease;
   }
+  .floor:active{ transform:scale(0.94); }
+  .floor.selected{
+    background:var(--kiri-accent); border-color:var(--kiri-accent);
+    color:#fff; box-shadow:0 2px 8px rgba(255,90,54,0.35);
+  }
+  .floor.bridge.selected{ background:var(--kiri-accent-deep); border-color:var(--kiri-accent-deep); color:#fff; }
+
+  .outdoor-btn{
+    display:block; width:100%; margin-top:20px;
+    background:#EFEAE1; border:1px solid rgba(18,21,28,0.08);
+    color:var(--ink); font-family:'Zen Kaku Gothic New', sans-serif;
+    font-size:12.5px; font-weight:700; padding:12px 10px; border-radius:12px;
+    cursor:pointer;
+  }
+  .outdoor-btn.selected{ background:var(--mist-deep); color:#fff; border-color:var(--mist-deep); }
+
+  .floor-detail{ margin-top:18px; }
+  .fd-placeholder{
+    font-size:12.5px; color:var(--ink-soft); text-align:center;
+    padding:22px 10px; background:#EFEAE1; border-radius:12px;
+  }
+  .fd-header{
+    display:flex; align-items:center; justify-content:space-between;
+    background:var(--mist-deep); color:#fff;
+    border-radius:12px 12px 0 0; padding:12px 16px;
+  }
+  .fd-title{ font-weight:800; font-size:14px; }
+  .fd-close{
+    background:none; border:none; color:#fff; font-size:14px; cursor:pointer;
+    opacity:.8; padding:2px 4px;
+  }
+  .fd-list{ display:flex; flex-direction:column; }
+  .fd-header ~ .fd-list{
+    border:1px solid rgba(18,21,28,0.08); border-top:none;
+    border-radius:0 0 12px 12px; overflow:hidden;
+  }
+  .fd-item{
+    display:flex; flex-direction:column; gap:2px;
+    padding:12px 16px; border-bottom:1px solid rgba(18,21,28,0.07);
+    background:#fff;
+  }
+  .fd-item:last-child{ border-bottom:none; }
+  .fd-item .fd-type{
+    font-size:10px; font-weight:700; color:var(--kiri-accent-deep);
+    background:rgba(255,90,54,0.08); border-radius:6px; padding:2px 8px;
+    align-self:flex-start; margin-bottom:2px;
+  }
+  .fd-item .fd-name{ font-size:14px; font-weight:800; color:var(--ink); }
+  .fd-item .fd-sub{ font-size:11.5px; color:var(--ink-soft); }
+  .fd-empty{ padding:20px 16px; font-size:12.5px; color:var(--ink-soft); background:#fff; text-align:center; }
   .floor.bridge{ background:linear-gradient(90deg, #FFE7CE, #FFD9BE); border-color:#FFC894; color:var(--kiri-accent-deep); }
   .bldg-cap{ text-align:center; font-size:12px; font-weight:800; margin-top:8px; color:var(--mist-deep2); }
   .bldg-cap small{ display:block; font-size:10px; font-weight:500; color:var(--ink-soft); margin-top:2px;}
@@ -328,6 +379,17 @@
   .dot.bridge{ background:linear-gradient(90deg, #FFE7CE, #FFD9BE); }
 
   /* updates */
+  .access-routes{ margin-top:18px; display:flex; flex-direction:column; gap:16px; }
+  .access-route{ padding-top:4px; }
+  .route-line{
+    font-size:12.5px; font-weight:800; color:var(--kiri-accent-deep);
+    background:rgba(255,90,54,0.08); display:inline-block;
+    padding:4px 12px; border-radius:999px; margin-bottom:8px;
+  }
+  .route-detail{ font-size:13px; line-height:1.7; color:var(--ink); margin-bottom:6px; }
+  .source-note{ font-size:11px; }
+  .source-note a{ color:var(--mist-mid); text-decoration:underline; }
+
   .qr-card{ display:flex; flex-direction:column; align-items:center; text-align:center; }
   .qr-box{
     background:#fff; padding:14px; border-radius:12px;
@@ -382,6 +444,7 @@
     <a class="link" href="#schedule">日程</a>
     <a class="link" href="#teams">参加団体</a>
     <a class="link" href="#venue">会場</a>
+    <a class="link" href="#access">アクセス</a>
     <a class="link" href="#qr">QRコード</a>
     <a class="link" href="#updates">お知らせ</a>
   </div>
@@ -506,39 +569,86 @@
   <section id="venue">
     <div class="sec-head">
       <div class="sec-eyebrow">VENUE</div>
-      <h2 class="sec-title">校舎について</h2>
-      <p class="sec-desc">校舎は5階建て。北棟・南棟に分かれており、3階までは中央棟でつながっています。</p>
+      <h2 class="sec-title">校舎について / フロアマップ</h2>
+      <p class="sec-desc">校舎は5階建て。北棟・南棟に分かれており、3階までは中央棟でつながっています。フロアをタップすると、そのフロアの企画一覧が表示されます。</p>
     </div>
 
     <div class="card">
       <div class="bldg-wrap">
         <div>
-          <div class="bldg">
-            <div class="floor">1F</div><div class="floor">2F</div><div class="floor">3F</div>
-            <div class="floor">4F</div><div class="floor">5F</div>
+          <div class="bldg" data-wing="north">
+            <div class="floor" data-floor="1">1F</div><div class="floor" data-floor="2">2F</div><div class="floor" data-floor="3">3F</div>
+            <div class="floor" data-floor="4">4F</div><div class="floor" data-floor="5">5F</div>
           </div>
           <div class="bldg-cap">北棟<small>5階建て</small></div>
         </div>
         <div>
-          <div class="bldg center">
-            <div class="floor bridge">1F</div><div class="floor bridge">2F</div><div class="floor bridge">3F</div>
+          <div class="bldg center" data-wing="central">
+            <div class="floor bridge" data-floor="1">1F</div><div class="floor bridge" data-floor="2">2F</div><div class="floor bridge" data-floor="3">3F</div>
           </div>
           <div class="bldg-cap">中央棟<small>北棟・南棟を接続（〜3F）</small></div>
         </div>
         <div>
-          <div class="bldg">
-            <div class="floor">1F</div><div class="floor">2F</div><div class="floor">3F</div>
-            <div class="floor">4F</div><div class="floor">5F</div>
+          <div class="bldg" data-wing="south">
+            <div class="floor" data-floor="1">1F</div><div class="floor" data-floor="2">2F</div><div class="floor" data-floor="3">3F</div>
+            <div class="floor" data-floor="4">4F</div><div class="floor" data-floor="5">5F</div>
           </div>
           <div class="bldg-cap">南棟<small>5階建て</small></div>
         </div>
       </div>
       <div class="legend">
-        <span><span class="dot reg"></span>各棟のフロア</span>
+        <span><span class="dot reg"></span>各棟のフロア（タップで企画一覧）</span>
         <span><span class="dot bridge"></span>中央棟で接続</span>
       </div>
-      <p class="venue-note">4階・5階は北棟・南棟それぞれ独立しており、中央棟を経由した行き来はできません。詳しい教室配置図（フロアマップ）は準備中です。</p>
+
+      <button type="button" class="outdoor-btn" id="outdoor-btn">屋外・特別エリアの企画を見る（中庭・体育館 等）</button>
+
+      <p class="venue-note">4階・5階は北棟・南棟それぞれ独立しており、中央棟を経由した行き来はできません。</p>
       <p class="venue-note">中庭は調理系企画（1-1・2-1・2-3・2-7）の販売スペース兼、ダンス部・合唱部などのステージ会場としても使用されます。</p>
+
+      <div class="floor-detail" id="floor-detail">
+        <div class="fd-placeholder" id="fd-placeholder">フロアをタップすると、そのフロアの企画一覧が表示されます。</div>
+        <div class="fd-header" id="fd-header" style="display:none;">
+          <span class="fd-title" id="fd-title"></span>
+          <button type="button" class="fd-close" id="fd-close" aria-label="閉じる">✕</button>
+        </div>
+        <div class="fd-list" id="fd-list"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="access">
+    <div class="sec-head">
+      <div class="sec-eyebrow">ACCESS</div>
+      <h2 class="sec-title">アクセス</h2>
+      <p class="sec-desc">霧が丘高等学校（神奈川県横浜市緑区）へのアクセス方法です。</p>
+    </div>
+
+    <div class="card">
+      <div class="info-grid">
+        <div class="info-row"><span class="k">住所</span><span class="v">〒226-0016<br>横浜市緑区霧が丘6-16-1</span></div>
+        <div class="info-row"><span class="k">電話</span><span class="v">045-921-6911</span></div>
+      </div>
+
+      <div class="access-routes">
+        <div class="access-route">
+          <div class="route-line">JR横浜線</div>
+          <div class="route-detail">十日市場駅（南口）→ バス（横浜市営・東急／65系統・23系統）約10分<br>「霧が丘高校前」下車 徒歩2分</div>
+        </div>
+        <div class="access-route">
+          <div class="route-line">東急田園都市線</div>
+          <div class="route-detail">青葉台駅 → バス（横浜市営・東急／65系統・23系統）約20分<br>「霧が丘高校前」下車 徒歩2分</div>
+          <div class="route-detail">長津田駅 → バス（神奈川中央交通／40系統）約10分<br>「霧が丘高校前」下車 徒歩2分</div>
+        </div>
+        <div class="access-route">
+          <div class="route-line">相鉄線</div>
+          <div class="route-detail">三ツ境駅 → バス（神奈川中央交通・相鉄／116系統・近隣公園経由）約20分<br>「霧が丘高校前」下車 徒歩3分</div>
+          <div class="route-detail">鶴ヶ峰駅 → バス（神奈川中央交通／115系統）約25分<br>「霧が丘高校前」下車 徒歩3分</div>
+        </div>
+      </div>
+
+      <p class="venue-note">お車での来校・学校敷地内への駐車についての案内は、学校公式サイトのアクセスページには記載がありませんでした。文化祭当日の駐車場の有無は、実行委員会・学校側の案内に従ってください。</p>
+      <p class="venue-note source-note">出典：<a href="https://www.pen-kanagawa.ed.jp/kirigaoka-h/access.html" target="_blank" rel="noopener">神奈川県立霧が丘高等学校 公式サイト「アクセス」</a></p>
     </div>
   </section>
 
@@ -564,8 +674,6 @@
     </div>
     <div class="todo-list">
       <div class="todo"><span class="tag">準備中</span>ステージ企画・タイムテーブル</div>
-      <div class="todo"><span class="tag">準備中</span>教室配置・フロアマップ</div>
-      <div class="todo"><span class="tag">準備中</span>アクセス・来場案内</div>
     </div>
   </section>
 
@@ -726,6 +834,133 @@
     });
 
     applyFilter();
+  })();
+
+  // ---- フロアマップ ----
+  // 教室配置図をもとにした「部屋番号／特別教室名 → 階」の対応表（位置情報のみ。企画の場所自体は teamEntries/clubEntries の place を正とする）
+  // 南棟＝ホームルーム教室、北棟＝特別教室、中央棟＝棟をつなぐ通路（教室なし）
+  const SOUTH_ROOM_FLOOR = {
+    "1-1":5, "1-2":5, "1-3":5, "1-4":5, "1-5":5, "1-6":5, "1-7":5,
+    "1-8":4, "1-9":4, "2-1":4, "2-2":4, "2-3":4, "2-4":4, "2-5":4,
+    "2-6":3, "2-7":3, "2-8":3, "2-9":3, "3-1":3, "3-2":3, "3-3":3,
+    "3-4":2, "3-5":2, "3-6":2, "3-7":2, "3-8":2, "3-9":2
+  };
+  const NORTH_ROOM_FLOOR = {
+    "書道室":5, "音楽室":5,
+    "彫塑室":4, "第二視聴覚":4,
+    "選択E":3, "社会科教室":3,
+    "保体教室":2, "被服室":2, "PTA室":2, "調理室":2, "選択D":2,
+    "生物室":1, "物理室":1, "事務室":1, "保健室":1
+  };
+
+  function matchFloor(place, table){
+    if(!place) return null;
+    for(const key in table){
+      if(place.indexOf(key) !== -1) return table[key];
+    }
+    return null;
+  }
+
+  // 全企画をフロアマップ用に集約（棟ごとに独立したバケット）
+  const floorItems = {
+    south: {1:[], 2:[], 3:[], 4:[], 5:[]},
+    north: {1:[], 2:[], 3:[], 4:[], 5:[]},
+    other: []
+  };
+
+  Object.keys(teamEntries).forEach(function(key){
+    const e = teamEntries[key];
+    const parts = key.split('-');
+    const label = parts[0] + '年' + parts[1] + '組';
+    const gradeClassKey = parts[0] + '-' + parts[1];
+    const item = { type:e.type, name:e.title, sub:label + '　' + e.place };
+
+    const southFloor = SOUTH_ROOM_FLOOR[gradeClassKey];
+    if(southFloor){
+      floorItems.south[southFloor].push(item);
+    } else {
+      const northFloor = matchFloor(e.place, NORTH_ROOM_FLOOR);
+      if(northFloor) floorItems.north[northFloor].push(item);
+      else floorItems.other.push(item);
+    }
+  });
+
+  clubEntries.forEach(function(e){
+    const item = { type:e.type, name:e.title, sub:e.org + '　' + e.place };
+    const northFloor = matchFloor(e.place, NORTH_ROOM_FLOOR);
+    if(northFloor) floorItems.north[northFloor].push(item);
+    else floorItems.other.push(item);
+  });
+
+  (function(){
+    const floorBoxes = document.querySelectorAll('.floor');
+    const outdoorBtn = document.getElementById('outdoor-btn');
+    const placeholder = document.getElementById('fd-placeholder');
+    const header = document.getElementById('fd-header');
+    const title = document.getElementById('fd-title');
+    const list = document.getElementById('fd-list');
+    const closeBtn = document.getElementById('fd-close');
+
+    const wingLabel = { north:'北棟', central:'中央棟', south:'南棟' };
+
+    function clearSelection(){
+      floorBoxes.forEach(function(b){ b.classList.remove('selected'); });
+      outdoorBtn.classList.remove('selected');
+    }
+
+    function renderList(items, headerText){
+      placeholder.style.display = 'none';
+      header.style.display = 'flex';
+      title.textContent = headerText;
+      list.innerHTML = '';
+      if(items.length === 0){
+        list.innerHTML = '<div class="fd-empty">このフロアで公開できる企画情報はまだありません。</div>';
+        return;
+      }
+      items.forEach(function(it){
+        const div = document.createElement('div');
+        div.className = 'fd-item';
+        div.innerHTML =
+          '<span class="fd-type">' + it.type + '</span>' +
+          '<span class="fd-name">' + it.name + '</span>' +
+          '<span class="fd-sub">' + it.sub + '</span>';
+        list.appendChild(div);
+      });
+    }
+
+    function renderFloor(wing, floor){
+      const label = wingLabel[wing] + '　' + floor + 'F';
+      if(wing === 'central'){
+        renderList([], label + '（' + wingLabel[wing] + 'は北棟・南棟をつなぐ通路です。教室はありません）');
+        return;
+      }
+      const items = floorItems[wing][floor] || [];
+      renderList(items, label + '　企画一覧（' + items.length + '件）');
+    }
+
+    floorBoxes.forEach(function(box){
+      box.addEventListener('click', function(){
+        clearSelection();
+        box.classList.add('selected');
+        const wing = box.closest('[data-wing]').dataset.wing;
+        renderFloor(wing, Number(box.dataset.floor));
+        document.getElementById('floor-detail').scrollIntoView({behavior:'smooth', block:'nearest'});
+      });
+    });
+
+    outdoorBtn.addEventListener('click', function(){
+      clearSelection();
+      outdoorBtn.classList.add('selected');
+      renderList(floorItems.other, '屋外・特別エリア　企画一覧（' + floorItems.other.length + '件）');
+      document.getElementById('floor-detail').scrollIntoView({behavior:'smooth', block:'nearest'});
+    });
+
+    closeBtn.addEventListener('click', function(){
+      clearSelection();
+      header.style.display = 'none';
+      placeholder.style.display = 'block';
+      list.innerHTML = '';
+    });
   })();
 
   // day tabs
