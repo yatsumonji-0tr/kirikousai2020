@@ -256,6 +256,27 @@
     border:1px solid rgba(18,21,28,0.08);
     box-shadow:0 2px 4px rgba(18,21,28,0.1);
   }
+
+  #notice{ padding-top:26px; }
+  .notice-card{
+    background:#FFF6DE;
+    border:2px solid var(--kiri-gold);
+    border-radius:var(--radius);
+    padding:20px;
+  }
+  .notice-title{ font-size:16px; font-weight:800; color:var(--ink); margin-bottom:6px; }
+  .notice-lead{ font-size:12.5px; color:var(--ink-soft); margin:0 0 14px; }
+  .notice-list{ display:flex; flex-direction:column; gap:12px; }
+  .notice-item{
+    display:flex; align-items:flex-start; gap:10px;
+    font-size:13px; line-height:1.6; color:var(--ink);
+  }
+  .notice-icon{ font-size:18px; line-height:1.4; flex-shrink:0; }
+  .notice-label{
+    display:inline-block; font-weight:800; color:var(--kiri-accent-deep);
+    margin-right:6px;
+  }
+
   .info-grid{ display:grid; grid-template-columns:1fr; gap:12px; }
   .info-row{
     display:flex; justify-content:space-between; align-items:baseline;
@@ -386,21 +407,50 @@
   .club-chip{ background:#EFEAE1; }
 
   /* venue diagram */
-  .bldg-wrap{ display:flex; align-items:flex-end; justify-content:center; gap:6px; margin-top:22px; }
-  .bldg{ display:flex; flex-direction:column-reverse; gap:4px; }
+  .venue-hint{ font-size:11.5px; color:var(--ink-soft); text-align:center; margin-bottom:2px; }
+  .bldg-wrap{ display:flex; align-items:flex-end; justify-content:center; gap:26px; margin-top:26px; padding:0 6px 12px; }
+  .bldg{ display:flex; flex-direction:column-reverse; gap:5px; }
   .floor{
-    width:64px; height:30px; border-radius:6px;
-    background:#fff; border:1px solid rgba(18,21,28,0.1);
+    position:relative;
+    width:56px; height:26px;
+    margin-left:9px;
+    background:linear-gradient(180deg, #ffffff, #F1EEE7);
+    border:1px solid rgba(18,21,28,0.14);
+    border-radius:2px;
     display:flex; align-items:center; justify-content:center;
-    font-size:10.5px; color:var(--ink-soft); font-weight:700;
-    cursor:pointer; transition:transform .12s ease, box-shadow .12s ease;
+    cursor:pointer;
+    transition:transform .12s ease;
   }
-  .floor:active{ transform:scale(0.94); }
+  .floor span{ position:relative; z-index:3; font-size:10px; color:var(--ink-soft); font-weight:800; }
+  .bldg.center .floor{ width:112px; }
+  .floor::before{
+    content:""; position:absolute; left:0; top:-9px; width:100%; height:9px;
+    background:linear-gradient(120deg, #ffffff, #E4E0D8);
+    border:1px solid rgba(18,21,28,0.12); border-bottom:none;
+    transform:skewX(-40deg); transform-origin:bottom left;
+  }
+  .floor::after{
+    content:""; position:absolute; right:-9px; top:0; width:9px; height:100%;
+    background:linear-gradient(180deg, #D6D2C9, #C4C0B6);
+    border:1px solid rgba(18,21,28,0.12); border-left:none;
+    transform:skewY(-45deg); transform-origin:top left;
+  }
+  .floor:active{ transform:translateY(2px); }
   .floor.selected{
-    background:var(--kiri-accent); border-color:var(--kiri-accent);
-    color:#fff; box-shadow:0 2px 8px rgba(255,79,154,0.35);
+    background:linear-gradient(180deg, #FF7CB4, var(--kiri-accent));
+    border-color:var(--kiri-accent-deep);
   }
-  .floor.bridge.selected{ background:var(--kiri-accent-deep); border-color:var(--kiri-accent-deep); color:#fff; }
+  .floor.selected span{ color:#fff; }
+  .floor.selected::before{ background:linear-gradient(120deg, #FFB6D8, #FF7CB4); border-color:var(--kiri-accent-deep); }
+  .floor.selected::after{ background:linear-gradient(180deg, var(--kiri-accent-deep), #A81F5A); border-color:var(--kiri-accent-deep); }
+  .floor.bridge{ background:linear-gradient(180deg, #FFF1E2, #FFD9BE); border-color:#F0BE8E; }
+  .floor.bridge span{ color:var(--kiri-accent-deep); }
+  .floor.bridge::before{ background:linear-gradient(120deg, #FFF8ED, #FFE7CE); border-color:#F0BE8E; }
+  .floor.bridge::after{ background:linear-gradient(180deg, #F0C89E, #DBA972); border-color:#F0BE8E; }
+  .floor.bridge.selected{ background:linear-gradient(180deg, #FF9E6B, var(--kiri-accent-deep)); border-color:var(--kiri-accent-deep); }
+  .floor.bridge.selected span{ color:#fff; }
+  .floor.bridge.selected::before{ background:linear-gradient(120deg, #FFC79E, #FF9E6B); border-color:var(--kiri-accent-deep); }
+  .floor.bridge.selected::after{ background:linear-gradient(180deg, var(--kiri-accent-deep), #7A1240); border-color:var(--kiri-accent-deep); }
 
   .outdoor-btn{
     display:block; width:100%; margin-top:20px;
@@ -445,7 +495,6 @@
   .fd-item .fd-name{ font-size:14px; font-weight:800; color:var(--ink); }
   .fd-item .fd-sub{ font-size:11.5px; color:var(--ink-soft); }
   .fd-empty{ padding:20px 16px; font-size:12.5px; color:var(--ink-soft); background:#fff; text-align:center; }
-  .floor.bridge{ background:linear-gradient(90deg, #FFE7CE, #FFD9BE); border-color:#FFC894; color:var(--kiri-accent-deep); }
   .bldg-cap{ text-align:center; font-size:12px; font-weight:800; margin-top:8px; color:var(--mist-deep2); }
   .bldg-cap small{ display:block; font-size:10px; font-weight:500; color:var(--ink-soft); margin-top:2px;}
   .bldg.center{ transform: translateY(0); }
@@ -521,6 +570,7 @@
 <nav class="nav">
   <div class="nav-inner">
     <span class="nav-logo">霧高祭</span>
+    <a class="link" href="#notice">ご来場の方へ</a>
     <a class="link" href="#overview">概要</a>
     <a class="link" href="#schedule">日程</a>
     <a class="link" href="#stage">ステージ</a>
@@ -588,6 +638,27 @@
 
 
 <main class="wrap px">
+
+  <section id="notice">
+    <div class="notice-card">
+      <div class="notice-title">📌 ご来場のみなさまへ</div>
+      <p class="notice-lead">安全で快適な文化祭運営のため、ご協力をお願いいたします。</p>
+      <div class="notice-list">
+        <div class="notice-item">
+          <span class="notice-icon">💳</span>
+          <div><span class="notice-label">決済</span>校内のお支払いはauPAYです。事前にauPAYへチャージをお済ませください。</div>
+        </div>
+        <div class="notice-item">
+          <span class="notice-icon">📸</span>
+          <div><span class="notice-label">撮影</span>校内での撮影写真をSNS等へ投稿する際は、個人情報・プライバシーに配慮をお願いいたします。</div>
+        </div>
+        <div class="notice-item">
+          <span class="notice-icon">🚭</span>
+          <div><span class="notice-label">禁煙</span>敷地内および学校周辺道路は全域禁煙です（加熱式タバコ含む）。</div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <section id="overview">
     <div class="sec-head">
@@ -768,26 +839,27 @@
     </div>
 
     <div class="card card-taped">
+      <p class="venue-hint">🚪 玄関側から見た配置です</p>
       <div class="bldg-wrap">
         <div>
-          <div class="bldg" data-wing="north">
-            <div class="floor" data-floor="1">1F</div><div class="floor" data-floor="2">2F</div><div class="floor" data-floor="3">3F</div>
-            <div class="floor" data-floor="4">4F</div><div class="floor" data-floor="5">5F</div>
+          <div class="bldg" data-wing="south">
+            <div class="floor" data-floor="1"><span>1F</span></div><div class="floor" data-floor="2"><span>2F</span></div><div class="floor" data-floor="3"><span>3F</span></div>
+            <div class="floor" data-floor="4"><span>4F</span></div><div class="floor" data-floor="5"><span>5F</span></div>
           </div>
-          <div class="bldg-cap">北棟<small>5階建て</small></div>
+          <div class="bldg-cap">南棟<small>5階建て</small></div>
         </div>
         <div>
           <div class="bldg center" data-wing="central">
-            <div class="floor bridge" data-floor="1">1F</div><div class="floor bridge" data-floor="2">2F</div><div class="floor bridge" data-floor="3">3F</div>
+            <div class="floor bridge" data-floor="1"><span>1F</span></div><div class="floor bridge" data-floor="2"><span>2F</span></div><div class="floor bridge" data-floor="3"><span>3F</span></div>
           </div>
           <div class="bldg-cap">中央棟<small>北棟・南棟を接続（〜3F）</small></div>
         </div>
         <div>
-          <div class="bldg" data-wing="south">
-            <div class="floor" data-floor="1">1F</div><div class="floor" data-floor="2">2F</div><div class="floor" data-floor="3">3F</div>
-            <div class="floor" data-floor="4">4F</div><div class="floor" data-floor="5">5F</div>
+          <div class="bldg" data-wing="north">
+            <div class="floor" data-floor="1"><span>1F</span></div><div class="floor" data-floor="2"><span>2F</span></div><div class="floor" data-floor="3"><span>3F</span></div>
+            <div class="floor" data-floor="4"><span>4F</span></div><div class="floor" data-floor="5"><span>5F</span></div>
           </div>
-          <div class="bldg-cap">南棟<small>5階建て</small></div>
+          <div class="bldg-cap">北棟<small>5階建て</small></div>
         </div>
       </div>
       <div class="legend">
@@ -1012,7 +1084,7 @@
     { type: "演示", title: "Kiri Quintet -キリテット-", org: "合唱部", place: "中庭・視聴覚室", desc: "J-POPや合唱曲を歌います" },
     { type: "展示", title: "カネコライフレンダ", org: "総合映像研究部", place: "社会科教室", desc: "金子先生を救う謎解き脱出ゲーム" },
     { type: "調理", title: "かてけん和み亭", org: "家庭科研究部", place: "選択D教室", desc: "うどんで運どんUP！" },
-    { type: "展示", title: "文芸浪漫", org: "文芸部", place: "1年1組教室", desc: "小説の販売を行っています。" },
+    { type: "展示", title: "文芸浪漫", org: "文芸部", place: "1年1組教室", desc: "小説の配布を行っています。" },
     { type: "展示", title: "APIの森", org: "API部", place: "2年3組教室", desc: "イラスト展示やってます！！" },
     { type: "展示", title: "転生したら美術部だった件", org: "美術部", place: "美術室", desc: "作品展示" },
     { type: "調理・展示・仕入れ", title: "霧高庵", org: "華道・茶道部", place: "2年7組教室", desc: "花の展示と抹茶を販売しています。" },
