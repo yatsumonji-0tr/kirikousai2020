@@ -11,19 +11,19 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <style>
   :root{
-    --mist-deep:#0F1A2E;
-    --mist-deep2:#1B2C48;
-    --mist-mid:#4A6079;
-    --mist-line: rgba(237,241,245,0.14);
+    --mist-deep:#1D8A4A;
+    --mist-deep2:#146B39;
+    --mist-mid:#3DBE5C;
+    --mist-line: rgba(237,241,245,0.22);
     --mist-light:#EDF1F5;
-    --paper:#F7F5F0;
+    --paper:#FFF9F0;
     --ink:#12151C;
     --ink-soft:#4B525E;
-    --kiri-accent:#FF5A36;
-    --kiri-accent-deep:#E13E1B;
-    --kiri-gold:#FFB238;
+    --kiri-accent:#FF4F9A;
+    --kiri-accent-deep:#E62E7B;
+    --kiri-gold:#FFD23F;
     --kiri-pink:#FF8FB3;
-    --kiri-sky:#7FC7E8;
+    --kiri-sky:#34B7EB;
     --hand-font:'Yomogi', cursive;
     --radius: 18px;
     --max: 560px;
@@ -62,7 +62,7 @@
 
   .tape{
     position:absolute; width:64px; height:22px;
-    background:repeating-linear-gradient(135deg, rgba(255,255,255,0.85), rgba(255,255,255,0.85) 6px, rgba(255,178,56,0.55) 6px, rgba(255,178,56,0.55) 12px);
+    background:repeating-linear-gradient(135deg, rgba(255,255,255,0.85), rgba(255,255,255,0.85) 6px, rgba(255,210,63,0.6) 6px, rgba(255,210,63,0.6) 12px);
     border:1px solid rgba(18,21,28,0.06);
     box-shadow:0 2px 4px rgba(18,21,28,0.08);
     opacity:.9;
@@ -94,7 +94,7 @@
   /* ---------- NAV ---------- */
   .nav{
     position:sticky; top:0; z-index:50;
-    background:rgba(15,26,46,0.86);
+    background:rgba(29,138,74,0.88);
     backdrop-filter: blur(10px);
     border-bottom:1px solid var(--mist-line);
   }
@@ -113,7 +113,7 @@
     margin-right:4px;
   }
   .nav a.link{
-    font-size:12.5px; color:#C7D2DE; text-decoration:none;
+    font-size:12.5px; color:#DFF6E4; text-decoration:none;
     white-space:nowrap; padding:6px 2px;
     border-bottom:2px solid transparent;
   }
@@ -122,7 +122,7 @@
   /* ---------- HERO ---------- */
   .hero{
     position:relative;
-    background: radial-gradient(120% 90% at 50% -10%, #24344F 0%, var(--mist-deep) 55%, #070C15 100%);
+    background: radial-gradient(120% 90% at 50% -10%, #0E86BE 0%, #0E6FA8 40%, var(--mist-deep) 100%);
     color:var(--mist-light);
     padding:56px 0 46px;
     overflow:hidden;
@@ -145,7 +145,7 @@
 
   .burst{
     position:absolute; inset:0;
-    background: radial-gradient(38% 32% at 50% 66%, rgba(255,90,54,0.35), rgba(255,90,54,0) 70%);
+    background: radial-gradient(38% 32% at 50% 66%, rgba(255,79,154,0.35), rgba(255,79,154,0) 70%);
     animation: pulse 6s ease-in-out infinite;
   }
   @keyframes pulse{ 0%,100%{opacity:.6;} 50%{opacity:1;} }
@@ -153,7 +153,7 @@
   .hero-inner{ position:relative; z-index:2; text-align:center;}
   .eyebrow{
     display:inline-flex; align-items:center; gap:8px;
-    font-size:11.5px; letter-spacing:.22em; color:#9FB0C4;
+    font-size:11.5px; letter-spacing:.22em; color:#CDEED6;
     border:1px solid var(--mist-line); border-radius:999px;
     padding:6px 14px; margin-bottom:22px;
   }
@@ -192,18 +192,18 @@
     margin-top:6px;
   }
   .date-pill .d{font-size:20px; font-weight:700; letter-spacing:.03em;}
-  .date-pill .w{font-size:11.5px; color:#9FB0C4; letter-spacing:.14em;}
+  .date-pill .w{font-size:11.5px; color:#CDEED6; letter-spacing:.14em;}
 
   .scrollcue{
-    margin-top:34px; font-size:11px; color:#8194A9; letter-spacing:.2em;
+    margin-top:34px; font-size:11px; color:#A8DDB6; letter-spacing:.2em;
   }
   .scrollcue::after{
     content:""; display:block; width:1px; height:26px; margin:8px auto 0;
-    background:linear-gradient(to bottom, #8194A9, transparent);
+    background:linear-gradient(to bottom, #A8DDB6, transparent);
   }
 
   .mascot-wrap{ margin-top:26px; display:inline-flex; flex-direction:column; align-items:center; }
-  .hero-mascot-caption{ color:#9FB0C4; }
+  .hero-mascot-caption{ color:#CDEED6; }
 
   /* ---------- SECTIONS ---------- */
   section{ padding:52px 0 8px; }
@@ -236,7 +236,7 @@
     width:66px; text-align:center;
   }
   .cd-box .num{ font-size:24px; font-weight:800; color:#fff; font-variant-numeric: tabular-nums;}
-  .cd-box .lab{ font-size:10px; color:#9FB0C4; letter-spacing:.12em; margin-top:2px;}
+  .cd-box .lab{ font-size:10px; color:#CDEED6; letter-spacing:.12em; margin-top:2px;}
 
   /* overview cards */
   .card{
@@ -252,7 +252,7 @@
     content:"";
     position:absolute; top:-14px; left:50%; transform:translateX(-50%) rotate(-3deg);
     width:70px; height:24px;
-    background:repeating-linear-gradient(135deg, rgba(255,255,255,0.92), rgba(255,255,255,0.92) 6px, rgba(255,178,56,0.55) 6px, rgba(255,178,56,0.55) 12px);
+    background:repeating-linear-gradient(135deg, rgba(255,255,255,0.92), rgba(255,255,255,0.92) 6px, rgba(255,210,63,0.6) 6px, rgba(255,210,63,0.6) 12px);
     border:1px solid rgba(18,21,28,0.08);
     box-shadow:0 2px 4px rgba(18,21,28,0.1);
   }
@@ -331,6 +331,7 @@
   }
   .chip.decided .c-num{ font-size:11px; font-weight:800; color:var(--kiri-accent-deep); letter-spacing:.04em; }
   .chip.decided .c-title{ font-size:15px; font-weight:800; color:var(--ink); line-height:1.3; }
+  .chip.decided .c-desc{ font-size:12.5px; color:var(--ink-soft); line-height:1.5; margin-top:2px; }
   .chip.decided .c-place{
     font-size:11px; color:var(--ink-soft); display:inline-flex; align-items:center; gap:5px; margin-top:2px;
   }
@@ -397,7 +398,7 @@
   .floor:active{ transform:scale(0.94); }
   .floor.selected{
     background:var(--kiri-accent); border-color:var(--kiri-accent);
-    color:#fff; box-shadow:0 2px 8px rgba(255,90,54,0.35);
+    color:#fff; box-shadow:0 2px 8px rgba(255,79,154,0.35);
   }
   .floor.bridge.selected{ background:var(--kiri-accent-deep); border-color:var(--kiri-accent-deep); color:#fff; }
 
@@ -438,7 +439,7 @@
   .fd-item:last-child{ border-bottom:none; }
   .fd-item .fd-type{
     font-size:10px; font-weight:700; color:var(--kiri-accent-deep);
-    background:rgba(255,90,54,0.08); border-radius:6px; padding:2px 8px;
+    background:rgba(255,79,154,0.1); border-radius:6px; padding:2px 8px;
     align-self:flex-start; margin-bottom:2px;
   }
   .fd-item .fd-name{ font-size:14px; font-weight:800; color:var(--ink); }
@@ -463,12 +464,12 @@
   .access-route{ padding-top:4px; }
   .route-line{
     font-size:12.5px; font-weight:800; color:var(--kiri-accent-deep);
-    background:rgba(255,90,54,0.08); display:inline-block;
+    background:rgba(255,79,154,0.1); display:inline-block;
     padding:4px 12px; border-radius:999px; margin-bottom:8px;
   }
   .route-detail{ font-size:13px; line-height:1.7; color:var(--ink); margin-bottom:6px; }
   .source-note{ font-size:11px; }
-  .source-note a{ color:var(--mist-mid); text-decoration:underline; }
+  .source-note a{ color:var(--mist-deep2); text-decoration:underline; }
 
   .qr-card{ display:flex; flex-direction:column; align-items:center; text-align:center; }
   .qr-box{
@@ -500,13 +501,13 @@
   }
   .todo .tag{
     font-size:10.5px; font-weight:800; color:var(--kiri-accent-deep);
-    background:rgba(255,90,54,0.1); border-radius:999px; padding:4px 10px;
+    background:rgba(255,79,154,0.12); border-radius:999px; padding:4px 10px;
     white-space:nowrap;
   }
 
   footer{
     margin-top:60px; padding:34px 0 44px;
-    background:var(--mist-deep); color:#9FB0C4;
+    background:var(--mist-deep); color:#CDEED6;
     text-align:center;
   }
   footer .fname{ font-family:'Shippori Mincho', serif; color:#fff; font-size:16px; margin-bottom:6px; }
@@ -535,7 +536,7 @@
   <div class="fog"><span></span><span></span><span></span></div>
   <div class="burst"></div>
 
-  <svg class="doodle float" style="top:14%; left:6%;" width="26" height="26" viewBox="0 0 24 24"><path d="M12 0 L14.5 9.5 L24 12 L14.5 14.5 L12 24 L9.5 14.5 L0 12 L9.5 9.5 Z" fill="#FFB238"/></svg>
+  <svg class="doodle float" style="top:14%; left:6%;" width="26" height="26" viewBox="0 0 24 24"><path d="M12 0 L14.5 9.5 L24 12 L14.5 14.5 L12 24 L9.5 14.5 L0 12 L9.5 9.5 Z" fill="#FFD23F"/></svg>
   <svg class="doodle spin-slow" style="top:60%; right:8%;" width="20" height="20" viewBox="0 0 24 24"><path d="M12 0 L14.5 9.5 L24 12 L14.5 14.5 L12 24 L9.5 14.5 L0 12 L9.5 9.5 Z" fill="#FF8FB3"/></svg>
   <svg class="doodle float" style="top:80%; left:12%;" width="16" height="16" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="#7FC7E8" stroke-width="2.5"/></svg>
 
@@ -556,22 +557,27 @@
     </div>
 
     <div class="mascot-wrap float">
-      <svg class="mascot" width="70" height="96" viewBox="0 0 140 190">
-        <path d="M45 118 C40 145 40 172 56 186 C66 195 84 195 94 186 C110 172 110 145 105 118 Z" fill="#BFE6A6" stroke="#12151C" stroke-width="3"/>
-        <path d="M45 108 C15 96 -8 118 2 145 C10 165 35 158 50 132 Z" fill="#8FCB6A" stroke="#12151C" stroke-width="3"/>
-        <ellipse cx="20" cy="128" rx="7" ry="5" fill="#E9F58A" transform="rotate(-25 20 128)"/>
-        <path d="M95 108 C125 96 148 118 138 145 C130 165 105 158 90 132 Z" fill="#8FCB6A" stroke="#12151C" stroke-width="3"/>
-        <ellipse cx="120" cy="128" rx="7" ry="5" fill="#E9F58A" transform="rotate(25 120 128)"/>
-        <circle cx="70" cy="155" r="15" fill="#FF8FB3" stroke="#12151C" stroke-width="2.5"/>
-        <text x="70" y="161" font-family="'Zen Kaku Gothic New', sans-serif" font-weight="900" font-size="16" fill="#fff" text-anchor="middle">K</text>
-        <path d="M70 6 C55 6 45 18 42 30 C28 30 16 44 20 58 C14 72 22 86 36 90 C40 106 54 118 70 124 C86 118 100 106 104 90 C118 86 126 72 120 58 C124 44 112 30 98 30 C95 18 85 6 70 6 Z" fill="#FF9EBE" stroke="#12151C" stroke-width="3"/>
-        <circle cx="56" cy="66" r="9" fill="#fff" stroke="#12151C" stroke-width="2.5"/>
-        <circle cx="84" cy="66" r="9" fill="#fff" stroke="#12151C" stroke-width="2.5"/>
-        <circle cx="58" cy="68" r="5" fill="#4FB6E0"/>
-        <circle cx="86" cy="68" r="5" fill="#4FB6E0"/>
-        <circle cx="59" cy="66" r="1.6" fill="#fff"/>
-        <circle cx="87" cy="66" r="1.6" fill="#fff"/>
-        <path d="M60 84 Q70 92 80 84" stroke="#12151C" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <svg class="mascot" width="66" height="90" viewBox="0 0 140 190">
+        <path d="M48 118 C40 142 42 168 58 182 C66 190 84 190 92 182 C108 168 110 142 102 118 Z" fill="#BFE6A6" stroke="#12151C" stroke-width="3"/>
+        <path d="M50 132 C25 130 5 142 8 160 C10 174 28 176 40 162 C46 154 50 142 50 132 Z" fill="#8FCB6A" stroke="#12151C" stroke-width="3"/>
+        <path d="M46 136 Q24 144 14 160" stroke="#12151C" stroke-width="1.6" fill="none" stroke-linecap="round" opacity="0.5"/>
+        <path d="M90 132 C115 130 135 142 132 160 C130 174 112 176 100 162 C94 154 90 142 90 132 Z" fill="#8FCB6A" stroke="#12151C" stroke-width="3"/>
+        <path d="M94 136 Q116 144 126 160" stroke="#12151C" stroke-width="1.6" fill="none" stroke-linecap="round" opacity="0.5"/>
+        <circle cx="70" cy="150" r="13" fill="#FF8FB3" stroke="#12151C" stroke-width="2.5"/>
+        <text x="70" y="155.5" font-family="'Zen Kaku Gothic New', sans-serif" font-weight="900" font-size="14" fill="#fff" text-anchor="middle">K</text>
+        <path d="M70 8 L58 30 L42 10 L26 34 C12 46 10 64 16 80 C22 96 40 108 70 112 C100 108 118 96 124 80 C130 64 128 46 114 34 L98 10 L82 30 Z" fill="#FF9EBE" stroke="#12151C" stroke-width="3" stroke-linejoin="round"/>
+        <ellipse cx="40" cy="86" rx="7" ry="4.5" fill="#FF8FB3" opacity="0.6"/>
+        <ellipse cx="100" cy="86" rx="7" ry="4.5" fill="#FF8FB3" opacity="0.6"/>
+        <circle cx="54" cy="72" r="10.5" fill="#fff" stroke="#12151C" stroke-width="2.2"/>
+        <circle cx="86" cy="72" r="10.5" fill="#fff" stroke="#12151C" stroke-width="2.2"/>
+        <circle cx="54" cy="74" r="7.5" fill="#12151C"/>
+        <circle cx="86" cy="74" r="7.5" fill="#12151C"/>
+        <circle cx="57" cy="70" r="2.2" fill="#fff"/>
+        <circle cx="89" cy="70" r="2.2" fill="#fff"/>
+        <circle cx="51" cy="78" r="1" fill="#fff"/>
+        <circle cx="83" cy="78" r="1" fill="#fff"/>
+        <path d="M62 94 Q70 100 78 94" stroke="#12151C" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <path d="M114 36 L116 42 L122 44 L116 46 L114 52 L112 46 L106 44 L112 42 Z" fill="#FFD23F"/>
       </svg>
       <div class="mascot-caption hero-mascot-caption">キリップ</div>
     </div>
@@ -597,7 +603,7 @@
         <div class="info-row"><span class="k">一般公開</span><span class="v">1日目 12:00〜15:00<br>2日目 10:00〜15:00</span></div>
         <div class="info-row"><span class="k">お支払い方法</span><span class="v">auPAY（PTA企画のみ現金）</span></div>
       </div>
-      <p class="venue-note">ほとんどの企画はauPAYでのお支払いとなります（会場内でもチャージ可能ですが、混雑が予想されるため事前のチャージをおすすめします）。PTA企画のみ現金でのお支払いです。</p>
+      <p class="venue-note">ほとんどの企画はauPAYでのお支払いとなります。会場内のチャージブース（会議室）でもチャージ可能ですが、混雑が予想されるため事前のチャージをおすすめします。PTA企画のみ現金でのお支払いです。</p>
     </div>
   </section>
 
@@ -716,6 +722,7 @@
         <div class="cat-tab" data-cat="exhibit">🖼️ 展示</div>
         <div class="cat-tab" data-cat="haunted">👻 お化け屋敷・迷路</div>
         <div class="cat-tab" data-cat="stage">🎤 ステージ・演示</div>
+        <div class="cat-tab" data-cat="info">📢 案内</div>
       </div>
       <div class="filter-count" id="filter-count"></div>
     </div>
@@ -738,16 +745,16 @@
       <div class="club-note">中庭で調理企画を行う1-1・2-1・2-3・2-7の教室は、部活動・委員会の展示会場として使用されます。</div>
     </div>
     <div class="no-result" id="no-result">
-      <svg width="46" height="63" viewBox="0 0 140 190" style="margin-bottom:8px;">
-        <path d="M45 118 C40 145 40 172 56 186 C66 195 84 195 94 186 C110 172 110 145 105 118 Z" fill="#BFE6A6" stroke="#12151C" stroke-width="3"/>
-        <path d="M45 108 C15 96 -8 118 2 145 C10 165 35 158 50 132 Z" fill="#8FCB6A" stroke="#12151C" stroke-width="3"/>
-        <path d="M95 108 C125 96 148 118 138 145 C130 165 105 158 90 132 Z" fill="#8FCB6A" stroke="#12151C" stroke-width="3"/>
-        <circle cx="70" cy="155" r="15" fill="#FF8FB3" stroke="#12151C" stroke-width="2.5"/>
-        <text x="70" y="161" font-family="'Zen Kaku Gothic New', sans-serif" font-weight="900" font-size="16" fill="#fff" text-anchor="middle">K</text>
-        <path d="M70 6 C55 6 45 18 42 30 C28 30 16 44 20 58 C14 72 22 86 36 90 C40 106 54 118 70 124 C86 118 100 106 104 90 C118 86 126 72 120 58 C124 44 112 30 98 30 C95 18 85 6 70 6 Z" fill="#FF9EBE" stroke="#12151C" stroke-width="3"/>
-        <path d="M49 60 L63 72 M63 60 L49 72" stroke="#12151C" stroke-width="3" stroke-linecap="round"/>
-        <path d="M77 60 L91 72 M91 60 L77 72" stroke="#12151C" stroke-width="3" stroke-linecap="round"/>
-        <path d="M60 90 Q70 84 80 90" stroke="#12151C" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <svg width="42" height="57" viewBox="0 0 140 190" style="margin-bottom:8px;">
+        <path d="M48 118 C40 142 42 168 58 182 C66 190 84 190 92 182 C108 168 110 142 102 118 Z" fill="#BFE6A6" stroke="#12151C" stroke-width="3"/>
+        <path d="M50 132 C25 130 5 142 8 160 C10 174 28 176 40 162 C46 154 50 142 50 132 Z" fill="#8FCB6A" stroke="#12151C" stroke-width="3"/>
+        <path d="M90 132 C115 130 135 142 132 160 C130 174 112 176 100 162 C94 154 90 142 90 132 Z" fill="#8FCB6A" stroke="#12151C" stroke-width="3"/>
+        <circle cx="70" cy="150" r="13" fill="#FF8FB3" stroke="#12151C" stroke-width="2.5"/>
+        <text x="70" y="155.5" font-family="'Zen Kaku Gothic New', sans-serif" font-weight="900" font-size="14" fill="#fff" text-anchor="middle">K</text>
+        <path d="M70 8 L58 30 L42 10 L26 34 C12 46 10 64 16 80 C22 96 40 108 70 112 C100 108 118 96 124 80 C130 64 128 46 114 34 L98 10 L82 30 Z" fill="#FF9EBE" stroke="#12151C" stroke-width="3" stroke-linejoin="round"/>
+        <path d="M44 66 L58 78 M58 66 L44 78" stroke="#12151C" stroke-width="3" stroke-linecap="round"/>
+        <path d="M82 66 L96 78 M96 66 L82 78" stroke="#12151C" stroke-width="3" stroke-linecap="round"/>
+        <path d="M60 96 Q70 90 80 96" stroke="#12151C" stroke-width="3" fill="none" stroke-linecap="round"/>
       </svg>
       <div>条件に一致する企画が見つかりませんでした。</div>
     </div>
@@ -795,22 +802,22 @@
 
       <div class="floor-detail" id="floor-detail">
         <div class="fd-placeholder" id="fd-placeholder">
-          <svg width="50" height="68" viewBox="0 0 140 190" style="margin-bottom:8px;">
-            <path d="M45 118 C40 145 40 172 56 186 C66 195 84 195 94 186 C110 172 110 145 105 118 Z" fill="#BFE6A6" stroke="#12151C" stroke-width="3"/>
-            <path d="M45 108 C15 96 -8 118 2 145 C10 165 35 158 50 132 Z" fill="#8FCB6A" stroke="#12151C" stroke-width="3"/>
-            <ellipse cx="20" cy="128" rx="7" ry="5" fill="#E9F58A" transform="rotate(-25 20 128)"/>
-            <path d="M95 108 C125 96 148 118 138 145 C130 165 105 158 90 132 Z" fill="#8FCB6A" stroke="#12151C" stroke-width="3"/>
-            <ellipse cx="120" cy="128" rx="7" ry="5" fill="#E9F58A" transform="rotate(25 120 128)"/>
-            <circle cx="70" cy="155" r="15" fill="#FF8FB3" stroke="#12151C" stroke-width="2.5"/>
-            <text x="70" y="161" font-family="'Zen Kaku Gothic New', sans-serif" font-weight="900" font-size="16" fill="#fff" text-anchor="middle">K</text>
-            <path d="M70 6 C55 6 45 18 42 30 C28 30 16 44 20 58 C14 72 22 86 36 90 C40 106 54 118 70 124 C86 118 100 106 104 90 C118 86 126 72 120 58 C124 44 112 30 98 30 C95 18 85 6 70 6 Z" fill="#FF9EBE" stroke="#12151C" stroke-width="3"/>
-            <circle cx="56" cy="66" r="9" fill="#fff" stroke="#12151C" stroke-width="2.5"/>
-            <circle cx="84" cy="66" r="9" fill="#fff" stroke="#12151C" stroke-width="2.5"/>
-            <circle cx="58" cy="68" r="5" fill="#4FB6E0"/>
-            <circle cx="86" cy="68" r="5" fill="#4FB6E0"/>
-            <circle cx="59" cy="66" r="1.6" fill="#fff"/>
-            <circle cx="87" cy="66" r="1.6" fill="#fff"/>
-            <path d="M60 84 Q70 92 80 84" stroke="#12151C" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <svg width="46" height="63" viewBox="0 0 140 190" style="margin-bottom:8px;">
+            <path d="M48 118 C40 142 42 168 58 182 C66 190 84 190 92 182 C108 168 110 142 102 118 Z" fill="#BFE6A6" stroke="#12151C" stroke-width="3"/>
+            <path d="M50 132 C25 130 5 142 8 160 C10 174 28 176 40 162 C46 154 50 142 50 132 Z" fill="#8FCB6A" stroke="#12151C" stroke-width="3"/>
+            <path d="M90 132 C115 130 135 142 132 160 C130 174 112 176 100 162 C94 154 90 142 90 132 Z" fill="#8FCB6A" stroke="#12151C" stroke-width="3"/>
+            <circle cx="70" cy="150" r="13" fill="#FF8FB3" stroke="#12151C" stroke-width="2.5"/>
+            <text x="70" y="155.5" font-family="'Zen Kaku Gothic New', sans-serif" font-weight="900" font-size="14" fill="#fff" text-anchor="middle">K</text>
+            <path d="M70 8 L58 30 L42 10 L26 34 C12 46 10 64 16 80 C22 96 40 108 70 112 C100 108 118 96 124 80 C130 64 128 46 114 34 L98 10 L82 30 Z" fill="#FF9EBE" stroke="#12151C" stroke-width="3" stroke-linejoin="round"/>
+            <ellipse cx="40" cy="86" rx="6.5" ry="4" fill="#FF8FB3" opacity="0.6"/>
+            <ellipse cx="100" cy="86" rx="6.5" ry="4" fill="#FF8FB3" opacity="0.6"/>
+            <circle cx="54" cy="72" r="10" fill="#fff" stroke="#12151C" stroke-width="2.2"/>
+            <circle cx="86" cy="72" r="10" fill="#fff" stroke="#12151C" stroke-width="2.2"/>
+            <circle cx="54" cy="74" r="7" fill="#12151C"/>
+            <circle cx="86" cy="74" r="7" fill="#12151C"/>
+            <circle cx="57" cy="70" r="2" fill="#fff"/>
+            <circle cx="89" cy="70" r="2" fill="#fff"/>
+            <path d="M62 94 Q70 100 78 94" stroke="#12151C" stroke-width="3" fill="none" stroke-linecap="round"/>
           </svg>
           <div>フロアをタップすると、そのフロアの企画一覧が表示されます。</div>
         </div>
@@ -886,16 +893,22 @@
 
 <footer>
   <div class="wrap px">
-    <svg width="60" height="46" viewBox="0 0 120 90" style="margin-bottom:10px;">
-      <ellipse cx="60" cy="55" rx="50" ry="30" fill="#1B2C48" stroke="#EDF1F5" stroke-width="3"/>
-      <circle cx="35" cy="35" r="24" fill="#1B2C48" stroke="#EDF1F5" stroke-width="3"/>
-      <circle cx="65" cy="26" r="28" fill="#1B2C48" stroke="#EDF1F5" stroke-width="3"/>
-      <circle cx="92" cy="42" r="20" fill="#1B2C48" stroke="#EDF1F5" stroke-width="3"/>
-      <circle cx="50" cy="52" r="4" fill="#EDF1F5"/>
-      <circle cx="74" cy="50" r="4" fill="#EDF1F5"/>
-      <ellipse cx="40" cy="62" rx="6" ry="4" fill="#FF8FB3" opacity="0.7"/>
-      <ellipse cx="84" cy="60" rx="6" ry="4" fill="#FF8FB3" opacity="0.7"/>
-      <path d="M 55 60 Q 61 66 68 59" stroke="#EDF1F5" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <svg width="50" height="68" viewBox="0 0 140 190" style="margin-bottom:10px;">
+      <path d="M48 118 C40 142 42 168 58 182 C66 190 84 190 92 182 C108 168 110 142 102 118 Z" fill="#BFE6A6" stroke="#EDF1F5" stroke-width="3"/>
+      <path d="M50 132 C25 130 5 142 8 160 C10 174 28 176 40 162 C46 154 50 142 50 132 Z" fill="#8FCB6A" stroke="#EDF1F5" stroke-width="3"/>
+      <path d="M90 132 C115 130 135 142 132 160 C130 174 112 176 100 162 C94 154 90 142 90 132 Z" fill="#8FCB6A" stroke="#EDF1F5" stroke-width="3"/>
+      <circle cx="70" cy="150" r="13" fill="#FF8FB3" stroke="#EDF1F5" stroke-width="2.5"/>
+      <text x="70" y="155.5" font-family="'Zen Kaku Gothic New', sans-serif" font-weight="900" font-size="14" fill="#fff" text-anchor="middle">K</text>
+      <path d="M70 8 L58 30 L42 10 L26 34 C12 46 10 64 16 80 C22 96 40 108 70 112 C100 108 118 96 124 80 C130 64 128 46 114 34 L98 10 L82 30 Z" fill="#FF9EBE" stroke="#EDF1F5" stroke-width="3" stroke-linejoin="round"/>
+      <ellipse cx="40" cy="86" rx="7" ry="4.5" fill="#FF8FB3" opacity="0.6"/>
+      <ellipse cx="100" cy="86" rx="7" ry="4.5" fill="#FF8FB3" opacity="0.6"/>
+      <circle cx="54" cy="72" r="10.5" fill="#fff" stroke="#EDF1F5" stroke-width="2.2"/>
+      <circle cx="86" cy="72" r="10.5" fill="#fff" stroke="#EDF1F5" stroke-width="2.2"/>
+      <circle cx="54" cy="74" r="7.5" fill="#12151C"/>
+      <circle cx="86" cy="74" r="7.5" fill="#12151C"/>
+      <circle cx="57" cy="70" r="2.2" fill="#fff"/>
+      <circle cx="89" cy="70" r="2.2" fill="#fff"/>
+      <path d="M62 94 Q70 100 78 94" stroke="#EDF1F5" stroke-width="3" fill="none" stroke-linecap="round"/>
     </svg>
     <div class="fname">霧高祭 2026</div>
     <div class="fnote">おもいッキリ<br>令和8年9月5日(土)・6日(日) 開催</div>
@@ -904,21 +917,27 @@
 
 <script>
   // ---- 教室配置：部屋番号／特別教室名 → 棟・階 の対応表 ----
-  // 南棟＝ホームルーム教室、北棟＝特別教室、中央棟＝棟をつなぐ通路（教室なし）
+  // 南棟＝ホームルーム教室・選択教室、北棟＝特別教室、中央棟＝図書館・視聴覚・会議室 等
   const SOUTH_ROOM_FLOOR = {
     "1-1":5, "1-2":5, "1-3":5, "1-4":5, "1-5":5, "1-6":5, "1-7":5,
     "1-8":4, "1-9":4, "2-1":4, "2-2":4, "2-3":4, "2-4":4, "2-5":4,
     "2-6":3, "2-7":3, "2-8":3, "2-9":3, "3-1":3, "3-2":3, "3-3":3,
     "3-4":2, "3-5":2, "3-6":2, "3-7":2, "3-8":2, "3-9":2
   };
-  const NORTH_ROOM_FLOOR = {
-    "書道室":5, "音楽室":5,
-    "彫塑室":4, "第二視聴覚":4,
-    "選択E":3, "社会科教室":3,
-    "保体教室":2, "被服室":2, "PTA室":2, "調理室":2, "選択D":2,
-    "生物室":1, "物理室":1, "事務室":1, "保健室":1
+  const SOUTH_SPECIAL = {
+    "選択A":5, "選択B":4, "選択C":3, "選択D":2, "生物室":1
   };
-  const WING_LABEL_JP = { south:'南棟', north:'北棟' };
+  const NORTH_SPECIAL = {
+    "書道室":5, "音楽室":5,
+    "彫塑室":4, "美術室":4,
+    "選択E":3, "社会科教室":3,
+    "保体教室":2, "被服室":2, "調理室":2,
+    "物理室":1, "事務室":1, "保健室":1
+  };
+  const CENTRAL_SPECIAL = {
+    "図書館":3, "視聴覚":3, "会議室":2
+  };
+  const WING_LABEL_JP = { south:'南棟', north:'北棟', central:'中央棟' };
 
   function matchFloor(place, table){
     if(!place) return null;
@@ -936,8 +955,12 @@
       const key = m[1] + '-' + m[2];
       if(SOUTH_ROOM_FLOOR[key]) return { wing:'south', floor:SOUTH_ROOM_FLOOR[key] };
     }
-    const nf = matchFloor(place, NORTH_ROOM_FLOOR);
+    const sf = matchFloor(place, SOUTH_SPECIAL);
+    if(sf) return { wing:'south', floor:sf };
+    const nf = matchFloor(place, NORTH_SPECIAL);
     if(nf) return { wing:'north', floor:nf };
+    const cf = matchFloor(place, CENTRAL_SPECIAL);
+    if(cf) return { wing:'central', floor:cf };
     return null;
   }
   function wingFloorLabel(place){
@@ -949,67 +972,71 @@
   // ---- 参加団体：企画データ ----
   // クラスの企画が決まったら、ここに追加・更新してください（キーは "学年-組"）
   const teamEntries = {
-    "1-1": { type: "調理",       title: "爆裂フランクフルト", place: "中庭" },
-    "1-2": { type: "仕入れ販売", title: "にこにこベーカリー☺", place: "1年2組" },
-    "1-3": { type: "展示",       title: "霧っと決めろ射的伝説", place: "1年3組" },
-    "1-4": { type: "展示",       title: "VS1-4", place: "1年4組" },
-    "1-5": { type: "準調理",     title: "無限の彼方へ、さあいコーン!!!!!!", place: "1年5組" },
-    "1-6": { type: "お化け屋敷・迷路", title: "デンジャラスはるな", place: "1年6組" },
-    "1-7": { type: "仕入れ販売", title: "縁結び処七福神", place: "1年7組" },
-    "1-8": { type: "製作販売",   title: "人魚の忘れ物", place: "1年8組" },
-    "1-9": { type: "仕入れ販売", title: "いちのきゅうり", place: "1年9組" },
+    "1-1": { type: "調理",       title: "爆裂フランクフルト", place: "中庭", desc: "本場ドイツ風フランクフルト" },
+    "1-2": { type: "仕入れ販売", title: "にこにこベーカリー☺", place: "1年2組", desc: "パンを仕入れて売ります！" },
+    "1-3": { type: "展示",       title: "霧っと決めろ射的伝説", place: "1年3組", desc: "伝説の射的王になろう" },
+    "1-4": { type: "展示",       title: "VS1-4", place: "1年4組", desc: "ボールを蹴って得点を狙うゲーム" },
+    "1-5": { type: "準調理",     title: "無限の彼方へ、さあいコーン!!!!!!", place: "1年5組", desc: "はじけるおいしさ☆" },
+    "1-6": { type: "お化け屋敷・迷路", title: "デンジャラスはるな", place: "1年6組", desc: "廃病院のお化け屋敷です。" },
+    "1-7": { type: "仕入れ販売", title: "縁結び処七福神", place: "1年7組", desc: "おむすびで福をお届けします♡！！" },
+    "1-8": { type: "製作販売",   title: "人魚の忘れ物", place: "1年8組", desc: "楽しい自作ストラップ" },
+    "1-9": { type: "仕入れ販売", title: "いちのきゅうり", place: "1年9組", desc: "きゅうりとラムネを売ってます！" },
 
-    "2-1": { type: "調理",       title: "3度の餃子と秋田が好き", place: "中庭" },
-    "2-2": { type: "お化け屋敷・迷路", title: "ONOT", place: "2年2組" },
-    "2-3": { type: "調理",       title: "青春の鉄板", place: "中庭" },
-    "2-4": { type: "仕入れ販売", title: "塔の上のケンツェル", place: "2年4組" },
-    "2-5": { type: "展示",       title: "Queen of hearts games", place: "2年5組" },
-    "2-6": { type: "仕入れ販売", title: "きっさ26", place: "2年6組" },
-    "2-7": { type: "調理",       title: "七貴族", place: "中庭" },
-    "2-8": { type: "展示",       title: "君の心にbull's eye", place: "2年8組" },
-    "2-9": { type: "仕入れ販売", title: "パリピン堂", place: "2年9組" },
+    "2-1": { type: "調理",       title: "3度の餃子と秋田が好き", place: "中庭", desc: "焼きたての餃子をご賞味あれ！" },
+    "2-2": { type: "お化け屋敷・迷路", title: "ONOT", place: "2年2組", desc: "”それ”が見えたら、終わり。" },
+    "2-3": { type: "調理",       title: "青春の鉄板", place: "中庭", desc: "美味しい焼きそばを売るゾ！" },
+    "2-4": { type: "仕入れ販売", title: "塔の上のケンツェル", place: "2年4組", desc: "冷たい缶ジュース売ってます！" },
+    "2-5": { type: "展示",       title: "Queen of hearts games", place: "2年5組", desc: "カジノに勝ってチップを集めよう" },
+    "2-6": { type: "仕入れ販売", title: "きっさ26", place: "2年6組", desc: "可愛いメイドがおもてなし♡" },
+    "2-7": { type: "調理",       title: "七貴族", place: "中庭", desc: "おいしい焼き鳥" },
+    "2-8": { type: "展示",       title: "君の心にbull's eye", place: "2年8組", desc: "ダーツ・ボウリング" },
+    "2-9": { type: "仕入れ販売", title: "パリピン堂", place: "2年9組", desc: "パリピっぽい店員が和菓子を売る" },
 
-    "3-1": { type: "仕入れ販売", title: "ONE BLUE", place: "3年1組" },
-    "3-2": { type: "展示",       title: "コマディー・ジョーンズ～もんげー秘宝を探すズラ～", place: "3年2組" },
-    "3-3": { type: "調理",       title: "ないきさんちのぱんけいき", place: "3年3組" },
-    "3-4": { type: "準調理",     title: "made in わたあめ", place: "3年4組" },
-    "3-5": { type: "お化け屋敷・迷路", title: "閑所～その扉、開けれますか～", place: "3年5組" },
-    "3-6": { type: "調理",       title: "森茶 Moricha", place: "3年6組" },
-    "3-7": { type: "調理",       title: "チュロっとよってかない？", place: "3年7組" },
-    "3-8": { type: "仕入れ販売", title: "後藤、バナナ売るってよ。", place: "3年8組" },
-    "3-9": { type: "仕入れ販売", title: "PLATFORM 9 3/9", place: "3年9組" }
-    // 例: "1-2": { type: "○○", title: "○○", place: "○○" },
+    "3-1": { type: "仕入れ販売", title: "ONE BLUE", place: "3年1組", desc: "ブルーシールアイス" },
+    "3-2": { type: "展示",       title: "コマディー・ジョーンズ～もんげー秘宝を探すズラ～", place: "3年2組", desc: "Let'sアトラクション！" },
+    "3-3": { type: "調理",       title: "ないきさんちのぱんけいき", place: "3年3組", desc: "3種のパンケーキ販売。" },
+    "3-4": { type: "準調理",     title: "made in わたあめ", place: "3年4組", desc: "メイド風で綿あめを販売します" },
+    "3-5": { type: "お化け屋敷・迷路", title: "閑所～その扉、開けれますか～", place: "3年5組", desc: "行方不明の花子を成仏させる。" },
+    "3-6": { type: "調理",       title: "森茶 Moricha", place: "3年6組", desc: "モチモチタピオカでほっと一息" },
+    "3-7": { type: "調理",       title: "チュロっとよってかない？", place: "3年7組", desc: "チョロっと食べてかない？" },
+    "3-8": { type: "仕入れ販売", title: "後藤、バナナ売るってよ。", place: "3年8組", desc: "冷たいチョコバナナ販売中" },
+    "3-9": { type: "仕入れ販売", title: "PLATFORM 9 3/9", place: "3年9組", desc: "消える前に急げ！魔法ドーナッツ" }
+    // 例: "1-2": { type: "○○", title: "○○", place: "○○", desc: "○○" },
   };
 
   // 部活動・委員会等の企画データ
   const clubEntries = [
-    { type: "演示", title: "Let's show time", org: "ダンス部", place: "中庭・体育館" },
-    { type: "演示", title: "KIRI☆WINDS CONCERT", org: "吹奏楽部", place: "体育館" },
-    { type: "演示", title: "K-K-FES", org: "軽音楽部", place: "視聴覚室・体育館" },
-    { type: "演示", title: "Kiri Quintet -キリテット-", org: "合唱部", place: "中庭・視聴覚室" },
-    { type: "展示", title: "カネコライフレンダ", org: "総合映像研究部", place: "社会科教室" },
-    { type: "調理", title: "かてけん和み亭", org: "家庭科研究部", place: "選択D教室" },
-    { type: "展示", title: "文芸浪漫", org: "文芸部", place: "1年1組教室" },
-    { type: "展示", title: "APIの森", org: "API部", place: "2年3組教室" },
-    { type: "展示", title: "転生したら美術部だった件", org: "美術部", place: "美術室" },
-    { type: "調理・展示・仕入れ", title: "霧高庵", org: "華道・茶道部", place: "2年7組教室" },
-    { type: "調理", title: "海辺のアトリエ", org: "ボランティア同好会", place: "生物室" },
-    { type: "展示", title: "内記監修写真展覧会", org: "写真部", place: "2年1組教室" },
-    { type: "展示", title: "ハンカチの展示", org: "福祉委員会", place: "図書館" },
-    { type: "展示", title: "しおりの森", org: "図書委員会", place: "図書館" },
-    { type: "展示", title: "Green Kirispot", org: "生徒会", place: "前庭" },
-    { type: "仕入れ", title: "31アイス／肉巻きおにぎり", org: "PTA", place: "PTA室（現金のみ）" }
+    { type: "演示", title: "Let's show time", org: "ダンス部", place: "中庭・体育館", desc: "ダンスで文化祭を盛り上げます！" },
+    { type: "演示", title: "KIRI☆WINDS CONCERT", org: "吹奏楽部", place: "体育館", desc: "霧吹で青春の音楽を奏でます！" },
+    { type: "演示", title: "K-K-FES", org: "軽音楽部", place: "視聴覚室・体育館", desc: "文化祭でライブをします。" },
+    { type: "演示", title: "Kiri Quintet -キリテット-", org: "合唱部", place: "中庭・視聴覚室", desc: "J-POPや合唱曲を歌います" },
+    { type: "展示", title: "カネコライフレンダ", org: "総合映像研究部", place: "社会科教室", desc: "金子先生を救う謎解き脱出ゲーム" },
+    { type: "調理", title: "かてけん和み亭", org: "家庭科研究部", place: "選択D教室", desc: "うどんで運どんUP！" },
+    { type: "展示", title: "文芸浪漫", org: "文芸部", place: "1年1組教室", desc: "小説の販売を行っています。" },
+    { type: "展示", title: "APIの森", org: "API部", place: "2年3組教室", desc: "イラスト展示やってます！！" },
+    { type: "展示", title: "転生したら美術部だった件", org: "美術部", place: "美術室", desc: "作品展示" },
+    { type: "調理・展示・仕入れ", title: "霧高庵", org: "華道・茶道部", place: "2年7組教室", desc: "花の展示と抹茶を販売しています。" },
+    { type: "調理", title: "海辺のアトリエ", org: "ボランティア同好会", place: "生物室", desc: "ブレスレットなどが作れるよ♡" },
+    { type: "展示", title: "内記監修写真展覧会", org: "写真部", place: "2年1組教室", desc: "部員が撮影した写真を展示します" },
+    { type: "展示", title: "ハンカチの展示", org: "福祉委員会", place: "図書館", desc: "図書館に展示します！！" },
+    { type: "展示", title: "しおりの森", org: "図書委員会", place: "図書館", desc: "しおりの作成・配布" },
+    { type: "展示", title: "Green Kirispot", org: "生徒会", place: "前庭", desc: "花壇に優美な花を咲かせよう" },
+    { type: "仕入れ", title: "販売予定品目：カップ麺、クッキー等", org: "PTA", place: "被服室（現金のみ）", desc: "カップ麺、クッキーもあります" },
+    { type: "案内", title: "広報スペース", org: "広報委員会", place: "会議室" },
+    { type: "案内", title: "生徒会インフォメーション", org: "生徒会", place: "会議室" },
+    { type: "案内", title: "auPAYチャージブース", org: "実行委員会", place: "会議室", desc: "混雑が予想されます。事前のチャージがおすすめです。" }
   ];
 
   // 種類 → ジャンル(検索・絞り込み用)への分類
   function categoryOf(type){
     if(type.indexOf('お化け屋敷') !== -1) return 'haunted';
     if(type.indexOf('演示') !== -1) return 'stage';
+    if(type.indexOf('案内') !== -1) return 'info';
     if(type.indexOf('展示') !== -1) return 'exhibit';
     return 'food'; // 調理・準調理・仕入れ販売・仕入れ・製作販売・調理展示仕入れ 等
   }
   function categoryEmoji(cat){
-    return { food:'🍡', exhibit:'🖼️', haunted:'👻', stage:'🎤' }[cat] || '✨';
+    return { food:'🍡', exhibit:'🖼️', haunted:'👻', stage:'🎤', info:'📢' }[cat] || '✨';
   }
 
   [1, 2, 3].forEach(function(grade){
@@ -1024,11 +1051,12 @@
         const floorLabel = wingFloorLabel(entry.place);
         chip.className = 'chip decided';
         chip.dataset.cat = cat;
-        chip.dataset.search = (label + ' ' + entry.title + ' ' + entry.place).toLowerCase();
+        chip.dataset.search = (label + ' ' + entry.title + ' ' + entry.place + ' ' + (entry.desc || '')).toLowerCase();
         chip.innerHTML =
           '<span class="c-type">' + categoryEmoji(cat) + ' ' + entry.type + '</span>' +
           '<span class="c-num">' + label + '</span>' +
           '<span class="c-title">' + entry.title + '</span>' +
+          (entry.desc ? '<span class="c-desc">' + entry.desc + '</span>' : '') +
           '<span class="c-place">' + entry.place + (floorLabel ? '　<span class="c-floor">' + floorLabel + '</span>' : '') + '</span>';
       } else {
         chip.className = 'chip';
@@ -1045,11 +1073,12 @@
       const floorLabel = wingFloorLabel(entry.place);
       chip.className = 'chip decided';
       chip.dataset.cat = categoryOf(entry.type);
-      chip.dataset.search = (entry.org + ' ' + entry.title + ' ' + entry.place).toLowerCase();
+      chip.dataset.search = (entry.org + ' ' + entry.title + ' ' + entry.place + ' ' + (entry.desc || '')).toLowerCase();
       chip.innerHTML =
         '<span class="c-type">' + categoryEmoji(categoryOf(entry.type)) + ' ' + entry.type + '</span>' +
         '<span class="c-num">' + entry.org + '</span>' +
         '<span class="c-title">' + entry.title + '</span>' +
+        (entry.desc ? '<span class="c-desc">' + entry.desc + '</span>' : '') +
         '<span class="c-place">' + entry.place + (floorLabel ? '　<span class="c-floor">' + floorLabel + '</span>' : '') + '</span>';
       grid.appendChild(chip);
     });
@@ -1106,6 +1135,7 @@
   const floorItems = {
     south: {1:[], 2:[], 3:[], 4:[], 5:[]},
     north: {1:[], 2:[], 3:[], 4:[], 5:[]},
+    central: {1:[], 2:[], 3:[]},
     other: []
   };
 
@@ -1165,11 +1195,11 @@
 
     function renderFloor(wing, floor){
       const label = wingLabel[wing] + '　' + floor + 'F';
-      if(wing === 'central'){
-        renderList([], label + '（' + wingLabel[wing] + 'は北棟・南棟をつなぐ通路です。教室はありません）');
+      const items = (floorItems[wing] && floorItems[wing][floor]) || [];
+      if(wing === 'central' && items.length === 0){
+        renderList([], label + '（教室はありません。北棟・南棟をつなぐ通路です）');
         return;
       }
-      const items = floorItems[wing][floor] || [];
       renderList(items, label + '　企画一覧（' + items.length + '件）');
     }
 
