@@ -315,13 +315,56 @@
   .t-time{ font-weight:800; font-size:15px; }
   .t-label{ font-size:13px; color:var(--ink-soft); margin-top:2px;}
 
+  .stage-legend{ display:flex; gap:14px; margin-bottom:16px; font-size:11px; color:var(--ink-soft); flex-wrap:wrap; }
+  .stage-legend .dot{ width:10px; height:10px; border-radius:3px; display:inline-block; margin-right:5px; vertical-align:-1px; }
+  .stage-legend .limited-dot{ background:repeating-linear-gradient(45deg, #8A8F98, #8A8F98 3px, #6C7078 3px, #6C7078 6px); }
+  .stage-legend .dash-dot{ background:none; border-top:2px dashed var(--mist-mid); width:14px; height:0; border-radius:0; margin-top:5px; }
+
   .stage-day-panel{ display:none; }
   .stage-day-panel.active{ display:block; }
-  .stage-loc{ margin-bottom:22px; }
-  .stage-loc:last-of-type{ margin-bottom:0; }
-  .stage-loc-title{
-    font-size:13.5px; font-weight:800; color:var(--mist-deep2);
-    margin-bottom:12px;
+
+  .stage-chart{ display:flex; gap:8px; }
+  .stage-time-axis{ width:30px; position:relative; flex-shrink:0; }
+  .stage-time-axis span{
+    position:absolute; left:0; right:0; font-size:9.5px; color:var(--ink-soft);
+    transform:translateY(-50%); text-align:right; padding-right:4px;
+  }
+
+  .stage-cols{ flex:1; display:flex; gap:6px; position:relative; min-width:0; }
+  .stage-marker-line{
+    position:absolute; left:0; right:0; border-top:2px dashed var(--mist-mid); z-index:2;
+  }
+  .stage-marker-label{
+    position:absolute; left:2px; font-size:9px; font-weight:800; color:var(--mist-deep2);
+    background:#F3F1EC; padding:0 4px; transform:translateY(-50%); white-space:nowrap; z-index:2;
+    border-radius:3px;
+  }
+
+  .stage-col{ flex:1; min-width:0; display:flex; flex-direction:column; }
+  .stage-col-label{ text-align:center; font-size:10.5px; font-weight:800; color:var(--mist-deep2); margin-bottom:6px; line-height:1.3; }
+  .stage-col-track{
+    position:relative; flex:1;
+    background:#F3F1EC; border-radius:8px; overflow:visible;
+  }
+
+  .stage-block{
+    position:absolute; left:3px; right:3px;
+    background:linear-gradient(180deg, #FF7CB4, var(--kiri-accent));
+    border-radius:6px;
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:1px;
+    padding:2px; overflow:hidden; text-align:center;
+  }
+  .stage-block .sb-title{ font-size:12px; font-weight:800; color:#fff; line-height:1.15; }
+  .stage-block .sb-time{ font-size:10px; font-weight:600; color:rgba(255,255,255,0.9); line-height:1.1; }
+  .stage-block.limited{
+    background:repeating-linear-gradient(45deg, #8A8F98, #8A8F98 6px, #6C7078 6px, #6C7078 12px);
+  }
+  .stage-block.limited::after{
+    content:"🔒"; position:absolute; top:-7px; right:-4px; font-size:10px;
+  }
+  .stage-note-limited{
+    font-size:10.5px; color:var(--ink-soft); margin-top:10px;
+    white-space:nowrap; overflow-x:auto; text-overflow:ellipsis;
   }
 
   /* teams */
@@ -573,7 +616,6 @@
     <a class="link" href="#notice">ご来場の方へ</a>
     <a class="link" href="#overview">概要</a>
     <a class="link" href="#schedule">日程</a>
-    <a class="link" href="#stage">ステージ</a>
     <a class="link" href="#teams">参加団体</a>
     <a class="link" href="#venue">会場</a>
     <a class="link" href="#access">アクセス</a>
@@ -682,7 +724,7 @@
     <div class="sec-head">
       <div class="sec-eyebrow">SCHEDULE</div>
       <h2 class="sec-title">タイムスケジュール</h2>
-      <p class="sec-desc">来場予定の方は一般公開の時間内にお越しください。</p>
+      <p class="sec-desc">来場予定の方は一般公開の時間内にお越しください。体育館・中庭・視聴覚室のステージ企画もあわせて掲載しています。</p>
     </div>
 
     <div class="day-tabs">
@@ -691,81 +733,14 @@
     </div>
 
     <div class="card card-taped">
-      <div class="day-panel active" data-day="1">
-        <div class="timeline">
-          <div class="t-item"><div class="t-time">9:30</div><div class="t-label">開会式</div></div>
-          <div class="t-item"><div class="t-time">12:00</div><div class="t-label">開場・一般公開スタート</div></div>
-          <div class="t-item"><div class="t-time">15:00</div><div class="t-label">一般公開終了</div></div>
-        </div>
-      </div>
-      <div class="day-panel" data-day="2">
-        <div class="timeline">
-          <div class="t-item"><div class="t-time">10:00</div><div class="t-label">開場・一般公開スタート</div></div>
-          <div class="t-item"><div class="t-time">15:00</div><div class="t-label">一般公開終了・閉会式</div></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="stage">
-    <div class="sec-head">
-      <div class="sec-eyebrow">STAGE SCHEDULE</div>
-      <h2 class="sec-title">ステージ企画タイムテーブル</h2>
-      <p class="sec-desc">体育館・中庭・視聴覚室で行われるステージ企画の時間です。</p>
-    </div>
-
-    <div class="day-tabs" id="stage-day-tabs">
-      <div class="day-tab active" data-sday="1">1日目｜9/5(土)</div>
-      <div class="day-tab" data-sday="2">2日目｜9/6(日)</div>
-    </div>
-
-    <div class="card card-taped">
-      <div class="stage-day-panel active" data-sday="1">
-        <div class="stage-loc">
-          <div class="stage-loc-title">🏟️ 体育館</div>
-          <div class="timeline">
-            <div class="t-item"><div class="t-time">10:50〜11:50</div><div class="t-label">ダンス部</div></div>
-          </div>
-        </div>
-        <div class="stage-loc">
-          <div class="stage-loc-title">🌳 中庭</div>
-          <div class="timeline">
-            <div class="t-item"><div class="t-time">12:20〜12:50</div><div class="t-label">ダンス部</div></div>
-            <div class="t-item"><div class="t-time">13:05〜13:35</div><div class="t-label">合唱部</div></div>
-            <div class="t-item"><div class="t-time">14:00〜14:50</div><div class="t-label">吹奏楽部</div></div>
-          </div>
-        </div>
-        <div class="stage-loc">
-          <div class="stage-loc-title">🎧 視聴覚室</div>
-          <div class="timeline">
-            <div class="t-item"><div class="t-time">13:35〜14:50</div><div class="t-label">軽音楽部</div></div>
-          </div>
-        </div>
+      <div class="stage-legend">
+        <span><span class="dot" style="background:var(--kiri-accent)"></span>一般公開</span>
+        <span><span class="dot limited-dot"></span>生徒限定公開</span>
+        <span><span class="dot dash-dot"></span>開場・閉会等</span>
       </div>
 
-      <div class="stage-day-panel" data-sday="2">
-        <div class="stage-loc">
-          <div class="stage-loc-title">🏟️ 体育館</div>
-          <div class="timeline">
-            <div class="t-item"><div class="t-time">10:25〜11:25</div><div class="t-label">軽音楽部</div></div>
-            <div class="t-item"><div class="t-time">13:50〜14:50</div><div class="t-label">ダンス部</div></div>
-          </div>
-        </div>
-        <div class="stage-loc">
-          <div class="stage-loc-title">🌳 中庭</div>
-          <div class="timeline">
-            <div class="t-item"><div class="t-time">11:35〜12:05</div><div class="t-label">ダンス部</div></div>
-            <div class="t-item"><div class="t-time">12:35〜13:25</div><div class="t-label">吹奏楽部</div></div>
-          </div>
-        </div>
-        <div class="stage-loc">
-          <div class="stage-loc-title">🎧 視聴覚室</div>
-          <div class="timeline">
-            <div class="t-item"><div class="t-time">10:35〜11:05</div><div class="t-label">合唱部</div></div>
-            <div class="t-item"><div class="t-time">11:35〜14:35</div><div class="t-label">軽音楽部</div></div>
-          </div>
-        </div>
-      </div>
+      <div id="stage-bands-1" class="stage-day-panel active" data-sday="1"></div>
+      <div id="stage-bands-2" class="stage-day-panel" data-sday="2"></div>
 
       <p class="venue-note">※ 雨天の場合、中庭で行う予定の公演は、同時刻に体育館で実施します。</p>
     </div>
@@ -1299,6 +1274,114 @@
       list.innerHTML = '';
     });
   })();
+
+  // ---- ステージ企画タイムテーブル（縦軸・場所は横並び）----
+  const stageSchedule = {
+    1: {
+      start: 9 * 60, end: 16 * 60,
+      markers: [
+        { time: '9:30', label: '開会式' },
+        { time: '12:00', label: '開場' },
+        { time: '15:00', label: '閉場' }
+      ],
+      tracks: [
+        { label: '🏟️<br>体育館', items: [
+          { start: '10:50', end: '11:50', title: 'ダンス部', limited: true }
+        ]},
+        { label: '🌳<br>中庭ステージ', items: [
+          { start: '9:50', end: '10:05', title: 'OP', limited: true },
+          { start: '12:20', end: '12:50', title: 'ダンス部' },
+          { start: '13:05', end: '13:35', title: '合唱部' },
+          { start: '14:00', end: '14:50', title: '吹奏楽部' }
+        ]},
+        { label: '🎧<br>視聴覚室', items: [
+          { start: '13:35', end: '14:50', title: '軽音楽部' }
+        ]}
+      ]
+    },
+    2: {
+      start: 10 * 60, end: 15 * 60,
+      markers: [
+        { time: '10:00', label: '開場' },
+        { time: '15:00', label: '閉場・閉会式' }
+      ],
+      tracks: [
+        { label: '🏟️<br>体育館', items: [
+          { start: '10:25', end: '11:25', title: '軽音楽部' },
+          { start: '13:50', end: '14:50', title: 'ダンス部' }
+        ]},
+        { label: '🌳<br>中庭ステージ', items: [
+          { start: '11:35', end: '12:05', title: 'ダンス部' },
+          { start: '12:35', end: '13:25', title: '吹奏楽部' }
+        ]},
+        { label: '🎧<br>視聴覚室', items: [
+          { start: '10:35', end: '11:05', title: '合唱部' },
+          { start: '11:35', end: '14:35', title: '軽音楽部' }
+        ]}
+      ]
+    }
+  };
+
+  function toMinutes(hhmm){
+    const parts = hhmm.split(':');
+    return Number(parts[0]) * 60 + Number(parts[1]);
+  }
+
+  const PX_PER_MIN = 1.7; // 縦軸の縮尺（見やすさ優先。実寸ではありません）
+
+  function renderStageSchedule(day, container){
+    const data = stageSchedule[day];
+    const total = data.end - data.start;
+    const chartHeight = Math.round(total * PX_PER_MIN);
+    let hasLimited = false;
+
+    // 左：時刻目盛り（1時間ごと）
+    let axisHtml = '';
+    for(let m = Math.ceil(data.start / 60) * 60; m <= data.end; m += 60){
+      const top = ((m - data.start) / total) * 100;
+      axisHtml += '<span style="top:' + top + '%">' + Math.floor(m / 60) + '時</span>';
+    }
+
+    // 開会式・開場・閉会等のマーカーライン（棟をまたいで横断）
+    let markerHtml = '';
+    data.markers.forEach(function(mk){
+      const top = ((toMinutes(mk.time) - data.start) / total) * 100;
+      markerHtml += '<div class="stage-marker-line" style="top:' + top + '%"></div>';
+      markerHtml += '<div class="stage-marker-label" style="top:' + top + '%">' + mk.time + ' ' + mk.label + '</div>';
+    });
+
+    // 各会場の列
+    let colsHtml = '';
+    data.tracks.forEach(function(track){
+      let blocksHtml = '';
+      track.items.forEach(function(item){
+        const s = toMinutes(item.start);
+        const e = toMinutes(item.end);
+        const top = ((s - data.start) / total) * 100;
+        const height = ((e - s) / total) * 100;
+        const limitedClass = item.limited ? ' limited' : '';
+        if(item.limited) hasLimited = true;
+        blocksHtml += '<div class="stage-block' + limitedClass + '" style="top:' + top + '%; height:' + height + '%;" title="' + item.title + '（' + item.start + '〜' + item.end + '）' + (item.limited ? '・生徒限定公開' : '') + '">' +
+          '<span class="sb-title">' + item.title + '</span>' +
+          '<span class="sb-time">' + item.start + '〜' + item.end + '</span></div>';
+      });
+      colsHtml += '<div class="stage-col"><div class="stage-col-label">' + track.label + '</div><div class="stage-col-track">' + blocksHtml + '</div></div>';
+    });
+
+    let html = '<div class="stage-chart">' +
+      '<div class="stage-time-axis" style="height:' + chartHeight + 'px">' + axisHtml + '</div>' +
+      '<div class="stage-cols" style="height:' + chartHeight + 'px">' + markerHtml + colsHtml + '</div>' +
+      '</div>';
+
+    if(hasLimited){
+      html += '<p class="stage-note-limited">🔒は生徒限定公開（一般公開時間外）です。</p>';
+    }
+
+    container.innerHTML = html;
+  }
+
+  renderStageSchedule(1, document.getElementById('stage-bands-1'));
+  renderStageSchedule(2, document.getElementById('stage-bands-2'));
 
   // day tabs (scoped to each day-tabs container so 日程 and ステージ don't interfere)
   document.querySelectorAll('.day-tabs').forEach(function(container){
