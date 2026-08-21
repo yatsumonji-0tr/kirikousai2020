@@ -396,6 +396,31 @@
   .chip.decided .c-num{ font-size:11px; font-weight:800; color:var(--kiri-accent-deep); letter-spacing:.04em; }
   .chip.decided .c-title{ font-size:15px; font-weight:800; color:var(--ink); line-height:1.3; }
   .chip.decided .c-desc{ font-size:12.5px; color:var(--ink-soft); line-height:1.5; margin-top:2px; }
+
+  .menu-toggle{
+    display:flex; align-items:center; gap:4px;
+    margin-top:8px; padding:6px 0 0;
+    border:none; border-top:1px dashed rgba(18,21,28,0.14);
+    background:none; cursor:pointer;
+    font-family:'Zen Kaku Gothic New', sans-serif;
+    font-size:11.5px; font-weight:700; color:var(--kiri-accent-deep);
+    width:100%; text-align:left;
+  }
+  .menu-toggle .mt-arrow{ transition:transform .15s ease; font-size:10px; }
+  .menu-toggle.open .mt-arrow{ transform:rotate(180deg); }
+  .menu-list{
+    max-height:0; overflow:hidden;
+    transition:max-height .2s ease;
+  }
+  .menu-list.open{ max-height:400px; }
+  .menu-row{
+    display:flex; justify-content:space-between; gap:10px;
+    font-size:12px; color:var(--ink); padding:5px 2px;
+    border-bottom:1px solid rgba(18,21,28,0.06);
+  }
+  .menu-row:last-child{ border-bottom:none; }
+  .mi-name{ flex:1; }
+  .mi-price{ font-weight:800; color:var(--kiri-accent-deep); white-space:nowrap; }
   .chip.decided .c-place{
     font-size:11px; color:var(--ink-soft); display:inline-flex; align-items:center; gap:5px; margin-top:2px;
   }
@@ -1019,56 +1044,79 @@
   // ---- 参加団体：企画データ ----
   // クラスの企画が決まったら、ここに追加・更新してください（キーは "学年-組"）
   const teamEntries = {
-    "1-1": { type: "調理",       title: "爆裂フランクフルト", place: "中庭", desc: "本場ドイツ風フランクフルト" },
-    "1-2": { type: "仕入れ販売", title: "にこにこベーカリー☺", place: "1年2組", desc: "パンを仕入れて売ります！" },
+    "1-1": { type: "調理",       title: "爆裂フランクフルト", place: "中庭", desc: "本場ドイツ風フランクフルト",
+      menu: [{n:"フランクフルト", p:150}] },
+    "1-2": { type: "仕入れ販売", title: "にこにこベーカリー☺", place: "1年2組", desc: "パンを仕入れて売ります！",
+      menu: [{n:"牛すじカレー", p:300},{n:"めんたいポテト", p:300},{n:"メロンパン", p:300},{n:"ベーコンエビ", p:300},{n:"発酵バターのクロワッサン", p:350}] },
     "1-3": { type: "展示",       title: "霧っと決めろ射的伝説", place: "1年3組", desc: "伝説の射的王になろう" },
     "1-4": { type: "展示",       title: "VS1-4", place: "1年4組", desc: "ボールを蹴って得点を狙うゲーム" },
-    "1-5": { type: "準調理",     title: "無限の彼方へ、さあいコーン!!!!!!", place: "1年5組", desc: "はじけるおいしさ☆" },
+    "1-5": { type: "準調理",     title: "無限の彼方へ、さあいコーン!!!!!!", place: "1年5組", desc: "はじけるおいしさ☆",
+      menu: [{n:"ポップコーン", p:200}] },
     "1-6": { type: "お化け屋敷・迷路", title: "デンジャラスはるな", place: "1年6組", desc: "廃病院のお化け屋敷です。" },
-    "1-7": { type: "仕入れ販売", title: "縁結び処七福神", place: "1年7組", desc: "おむすびで福をお届けします♡！！" },
-    "1-8": { type: "製作販売",   title: "人魚の忘れ物", place: "1年8組", desc: "楽しい自作ストラップ" },
-    "1-9": { type: "仕入れ販売", title: "いちのきゅうり", place: "1年9組", desc: "きゅうりとラムネを売ってます！" },
+    "1-7": { type: "仕入れ販売", title: "縁結び処七福神", place: "1年7組", desc: "おむすびで福をお届けします♡！！",
+      menu: [{n:"おにぎり（しゃけ・梅・ツナ 他）", p:180},{n:"Qooリンゴ", p:130},{n:"バヤリースオレンジ", p:130},{n:"ファンタグレープ", p:120},{n:"コカ・コーラ", p:110},{n:"お茶", p:110}] },
+    "1-8": { type: "製作販売",   title: "人魚の忘れ物", place: "1年8組", desc: "楽しい自作ストラップ",
+      menu: [{n:"ストラップ", p:50}] },
+    "1-9": { type: "仕入れ販売", title: "いちのきゅうり", place: "1年9組", desc: "きゅうりとラムネを売ってます！",
+      menu: [{n:"きゅうり一本漬", p:250},{n:"きゅうり一本漬（キムチ味）", p:250},{n:"ラムネ", p:120}] },
 
-    "2-1": { type: "調理",       title: "3度の餃子と秋田が好き", place: "中庭", desc: "焼きたての餃子をご賞味あれ！" },
+    "2-1": { type: "調理",       title: "3度の餃子と秋田が好き", place: "中庭", desc: "焼きたての餃子をご賞味あれ！",
+      menu: [{n:"餃子", p:100}] },
     "2-2": { type: "お化け屋敷・迷路", title: "ONOT", place: "2年2組", desc: "”それ”が見えたら、終わり。" },
-    "2-3": { type: "調理",       title: "青春の鉄板", place: "中庭", desc: "美味しい焼きそばを売るゾ！" },
-    "2-4": { type: "仕入れ販売", title: "塔の上のケンツェル", place: "2年4組", desc: "冷たい缶ジュース売ってます！" },
+    "2-3": { type: "調理",       title: "青春の鉄板", place: "中庭", desc: "美味しい焼きそばを売るゾ！",
+      menu: [{n:"焼きそば", p:250}] },
+    "2-4": { type: "仕入れ販売", title: "塔の上のケンツェル", place: "2年4組", desc: "冷たい缶ジュース売ってます！",
+      menu: [{n:"コカ・コーラ", p:70},{n:"ファンタグレープ", p:70},{n:"Qooオレンジ", p:70},{n:"カルピスウオーター", p:70},{n:"三ツ矢サイダー", p:70}] },
     "2-5": { type: "展示",       title: "Queen of hearts games", place: "2年5組", desc: "カジノに勝ってチップを集めよう" },
-    "2-6": { type: "仕入れ販売", title: "きっさ26", place: "2年6組", desc: "可愛いメイドがおもてなし♡" },
-    "2-7": { type: "調理",       title: "七貴族", place: "中庭", desc: "おいしい焼き鳥" },
+    "2-6": { type: "仕入れ販売", title: "きっさ26", place: "2年6組", desc: "可愛いメイドがおもてなし♡",
+      menu: [{n:"プリン", p:100},{n:"ゼリー（みかん・ぶどう）", p:100},{n:"リンゴジュース", p:100},{n:"お茶", p:100},{n:"コカ・コーラ", p:100}] },
+    "2-7": { type: "調理",       title: "七貴族", place: "中庭", desc: "おいしい焼き鳥",
+      menu: [{n:"もも・とりかわセット", p:120}] },
     "2-8": { type: "展示",       title: "君の心にbull's eye", place: "2年8組", desc: "ダーツ・ボウリング" },
-    "2-9": { type: "仕入れ販売", title: "パリピン堂", place: "2年9組", desc: "パリピっぽい店員が和菓子を売る" },
+    "2-9": { type: "仕入れ販売", title: "パリピン堂", place: "2年9組", desc: "パリピっぽい店員が和菓子を売る",
+      menu: [{n:"かりんとう饅頭", p:150},{n:"カステラ", p:200},{n:"どら焼き", p:200},{n:"お茶", p:100}] },
 
-    "3-1": { type: "仕入れ販売", title: "ONE BLUE", place: "3年1組", desc: "ブルーシールアイス" },
+    "3-1": { type: "仕入れ販売", title: "ONE BLUE", place: "3年1組", desc: "ブルーシールアイス",
+      menu: [{n:"沖縄紅いも", p:300},{n:"沖縄パイン", p:300},{n:"塩ちんすこう", p:300}] },
     "3-2": { type: "展示",       title: "コマディー・ジョーンズ～もんげー秘宝を探すズラ～", place: "3年2組", desc: "Let'sアトラクション！" },
-    "3-3": { type: "調理",       title: "ないきさんちのぱんけいき", place: "3年3組", desc: "3種のパンケーキ販売。" },
-    "3-4": { type: "準調理",     title: "made in わたあめ", place: "3年4組", desc: "メイド風で綿あめを販売します" },
+    "3-3": { type: "調理",       title: "ないきさんちのぱんけいき", place: "3年3組", desc: "3種のパンケーキ販売。",
+      menu: [{n:"チョコ", p:200},{n:"メープルシロップ", p:200},{n:"生クリーム", p:200}] },
+    "3-4": { type: "準調理",     title: "made in わたあめ", place: "3年4組", desc: "メイド風で綿あめを販売します",
+      menu: [{n:"わたあめ（プレーン・イチゴ・ラムネ・レモン）", p:100}] },
     "3-5": { type: "お化け屋敷・迷路", title: "閑所～その扉、開けれますか～", place: "3年5組", desc: "行方不明の花子を成仏させる。" },
-    "3-6": { type: "調理",       title: "森茶 Moricha", place: "3年6組", desc: "モチモチタピオカでほっと一息" },
-    "3-7": { type: "調理",       title: "チュロっとよってかない？", place: "3年7組", desc: "チョロっと食べてかない？" },
-    "3-8": { type: "仕入れ販売", title: "後藤、バナナ売るってよ。", place: "3年8組", desc: "冷たいチョコバナナ販売中" },
-    "3-9": { type: "仕入れ販売", title: "PLATFORM 9 3/9", place: "3年9組", desc: "消える前に急げ！魔法ドーナッツ" }
-    // 例: "1-2": { type: "○○", title: "○○", place: "○○", desc: "○○" },
+    "3-6": { type: "調理",       title: "森茶 Moricha", place: "3年6組", desc: "モチモチタピオカでほっと一息",
+      menu: [{n:"タピオカミルクティー", p:250},{n:"タピオカ抹茶", p:250},{n:"タピオカほうじ茶", p:250}] },
+    "3-7": { type: "調理",       title: "チュロっとよってかない？", place: "3年7組", desc: "チョロっと食べてかない？",
+      menu: [{n:"チュロス（チョコソース）", p:230},{n:"チュロス（イチゴソース）", p:230},{n:"チュロス（黒みつ・きなこ）", p:230}] },
+    "3-8": { type: "仕入れ販売", title: "後藤、バナナ売るってよ。", place: "3年8組", desc: "冷たいチョコバナナ販売中",
+      menu: [{n:"チョコバナナ", p:300}] },
+    "3-9": { type: "仕入れ販売", title: "PLATFORM 9 3/9", place: "3年9組", desc: "消える前に急げ！魔法ドーナッツ",
+      menu: [{n:"ドーナツ プレーン", p:150},{n:"ドーナツ キャラメル", p:150},{n:"ドーナツ シナモン", p:150},{n:"ドーナツ チョコ", p:150}] }
+    // 例: "1-2": { type: "○○", title: "○○", place: "○○", desc: "○○", menu:[{n:"品目",p:100}] },
   };
 
   // 部活動・委員会等の企画データ
   const clubEntries = [
     { type: "演示", title: "Let's show time", org: "ダンス部", place: "中庭・体育館", desc: "ダンスで文化祭を盛り上げます！" },
-    { type: "演示", title: "KIRI☆WINDS CONCERT", org: "吹奏楽部", place: "体育館", desc: "霧吹で青春の音楽を奏でます！" },
+    { type: "演示", title: "KIRI☆WINDS CONCERT", org: "吹奏楽部", place: "中庭", desc: "霧吹で青春の音楽を奏でます！" },
     { type: "演示", title: "K-K-FES", org: "軽音楽部", place: "視聴覚室・体育館", desc: "文化祭でライブをします。" },
     { type: "演示", title: "Kiri Quintet -キリテット-", org: "合唱部", place: "中庭・視聴覚室", desc: "J-POPや合唱曲を歌います" },
     { type: "展示", title: "カネコライフレンダ", org: "総合映像研究部", place: "社会科教室", desc: "金子先生を救う謎解き脱出ゲーム" },
-    { type: "調理", title: "かてけん和み亭", org: "家庭科研究部", place: "選択D教室", desc: "うどんで運どんUP！" },
+    { type: "調理", title: "かてけん和み亭", org: "家庭科研究部", place: "選択D教室", desc: "うどんで運どんUP！",
+      menu: [{n:"豚しゃぶうどん", p:200},{n:"かてけんうどん", p:150}] },
     { type: "展示", title: "文芸浪漫", org: "文芸部", place: "1年1組教室", desc: "小説の配布を行っています。" },
     { type: "展示", title: "APIの森", org: "API部", place: "2年3組教室", desc: "イラスト展示やってます！！" },
     { type: "展示", title: "転生したら美術部だった件", org: "美術部", place: "美術室", desc: "作品展示" },
-    { type: "調理・展示・仕入れ", title: "霧高庵", org: "華道・茶道部", place: "2年7組教室", desc: "花の展示と抹茶を販売しています。" },
-    { type: "調理", title: "海辺のアトリエ", org: "ボランティア同好会", place: "生物室", desc: "ブレスレットなどが作れるよ♡" },
+    { type: "調理・展示・仕入れ", title: "霧高庵", org: "華道・茶道部", place: "2年7組教室", desc: "花の展示と抹茶を販売しています。",
+      menu: [{n:"お茶とお菓子", p:250}] },
+    { type: "調理", title: "海辺のアトリエ", org: "ボランティア同好会", place: "生物室", desc: "ブレスレットなどが作れるよ♡",
+      menu: [{n:"ストラップ", p:200},{n:"ブレスレット", p:200}] },
     { type: "展示", title: "内記監修写真展覧会", org: "写真部", place: "2年1組教室", desc: "部員が撮影した写真を展示します" },
     { type: "展示", title: "ハンカチの展示", org: "福祉委員会", place: "図書館", desc: "図書館に展示します！！" },
     { type: "展示", title: "しおりの森", org: "図書委員会", place: "図書館", desc: "しおりの作成・配布" },
     { type: "展示", title: "Green Kirispot", org: "生徒会", place: "前庭", desc: "花壇に優美な花を咲かせよう" },
-    { type: "仕入れ", title: "販売予定品目：カップ麺、クッキー等", org: "PTA", place: "被服室（現金のみ）", desc: "カップ麺、クッキーもあります" },
+    { type: "仕入れ", title: "販売予定品目：カップ麺、クッキー等", org: "PTA", place: "被服室（現金のみ）", desc: "カップ麺、クッキーもあります",
+      menu: [{n:"カップヌードル", p:200},{n:"ぷかぷかさんクッキー", p:100},{n:"ドリンク", p:100},{n:"ラスク", p:170}] },
     { type: "案内", title: "広報スペース", org: "広報委員会", place: "会議室" },
     { type: "案内", title: "生徒会インフォメーション", org: "生徒会", place: "会議室" },
     { type: "案内", title: "auPAYチャージブース", org: "実行委員会", place: "会議室", desc: "混雑が予想されます。事前のチャージがおすすめです。" }
@@ -1086,6 +1134,19 @@
     return { food:'🍡', exhibit:'🖼️', haunted:'👻', stage:'🎤', info:'📢' }[cat] || '✨';
   }
 
+  function menuHtml(menu){
+    if(!menu || !menu.length) return '';
+    const rows = menu.map(function(m){
+      return '<div class="menu-row"><span class="mi-name">' + m.n + '</span><span class="mi-price">¥' + m.p + '</span></div>';
+    }).join('');
+    return '<button type="button" class="menu-toggle">メニューを見る<span class="mt-arrow">▾</span></button>' +
+           '<div class="menu-list">' + rows + '</div>';
+  }
+  function menuSearchText(menu){
+    if(!menu || !menu.length) return '';
+    return menu.map(function(m){ return m.n; }).join(' ');
+  }
+
   [1, 2, 3].forEach(function(grade){
     const grid = document.querySelector('#grade-' + grade + ' .chip-grid');
     for(let cls = 1; cls <= 9; cls++){
@@ -1098,13 +1159,14 @@
         const floorLabel = wingFloorLabel(entry.place);
         chip.className = 'chip decided';
         chip.dataset.cat = cat;
-        chip.dataset.search = (label + ' ' + entry.title + ' ' + entry.place + ' ' + (entry.desc || '')).toLowerCase();
+        chip.dataset.search = (label + ' ' + entry.title + ' ' + entry.place + ' ' + (entry.desc || '') + ' ' + menuSearchText(entry.menu)).toLowerCase();
         chip.innerHTML =
           '<span class="c-type">' + categoryEmoji(cat) + ' ' + entry.type + '</span>' +
           '<span class="c-num">' + label + '</span>' +
           '<span class="c-title">' + entry.title + '</span>' +
           (entry.desc ? '<span class="c-desc">' + entry.desc + '</span>' : '') +
-          '<span class="c-place">' + entry.place + (floorLabel ? '　<span class="c-floor">' + floorLabel + '</span>' : '') + '</span>';
+          '<span class="c-place">' + entry.place + (floorLabel ? '　<span class="c-floor">' + floorLabel + '</span>' : '') + '</span>' +
+          menuHtml(entry.menu);
       } else {
         chip.className = 'chip';
         chip.textContent = cls + '組';
@@ -1120,16 +1182,26 @@
       const floorLabel = wingFloorLabel(entry.place);
       chip.className = 'chip decided';
       chip.dataset.cat = categoryOf(entry.type);
-      chip.dataset.search = (entry.org + ' ' + entry.title + ' ' + entry.place + ' ' + (entry.desc || '')).toLowerCase();
+      chip.dataset.search = (entry.org + ' ' + entry.title + ' ' + entry.place + ' ' + (entry.desc || '') + ' ' + menuSearchText(entry.menu)).toLowerCase();
       chip.innerHTML =
         '<span class="c-type">' + categoryEmoji(categoryOf(entry.type)) + ' ' + entry.type + '</span>' +
         '<span class="c-num">' + entry.org + '</span>' +
         '<span class="c-title">' + entry.title + '</span>' +
         (entry.desc ? '<span class="c-desc">' + entry.desc + '</span>' : '') +
-        '<span class="c-place">' + entry.place + (floorLabel ? '　<span class="c-floor">' + floorLabel + '</span>' : '') + '</span>';
+        '<span class="c-place">' + entry.place + (floorLabel ? '　<span class="c-floor">' + floorLabel + '</span>' : '') + '</span>' +
+        menuHtml(entry.menu);
       grid.appendChild(chip);
     });
   })();
+
+  // メニュー開閉（イベント委譲）
+  document.addEventListener('click', function(e){
+    const btn = e.target.closest('.menu-toggle');
+    if(!btn) return;
+    const list = btn.nextElementSibling;
+    const open = list.classList.toggle('open');
+    btn.classList.toggle('open', open);
+  });
 
   // ---- 検索・ジャンル絞り込み ----
   (function(){
@@ -1281,7 +1353,7 @@
       start: 9 * 60, end: 16 * 60,
       markers: [
         { time: '9:25', label: '開会式' },
-        { time: '11:55', label: '開場' },
+        { time: '12:00', label: '開場' },
         { time: '14:55', label: '閉場' }
       ],
       tracks: [
@@ -1302,7 +1374,7 @@
     2: {
       start: 9 * 60, end: 15 * 60,
       markers: [
-        { time: '9:55', label: '開場' },
+        { time: '10:00', label: '開場' },
         { time: '14:55', label: '閉場・閉会式' }
       ],
       tracks: [
