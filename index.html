@@ -323,6 +323,13 @@
   .stage-day-panel{ display:none; }
   .stage-day-panel.active{ display:block; }
 
+  .stage-col-headers{ display:flex; gap:6px; margin-bottom:6px; }
+  .stage-axis-spacer{ width:30px; flex-shrink:0; }
+  .stage-col-header{
+    flex:1; min-width:0; text-align:center;
+    font-size:10.5px; font-weight:800; color:var(--mist-deep2); line-height:1.3;
+  }
+
   .stage-chart{ display:flex; gap:8px; }
   .stage-time-axis{ width:30px; position:relative; flex-shrink:0; }
   .stage-time-axis span{
@@ -340,10 +347,8 @@
     border-radius:3px;
   }
 
-  .stage-col{ flex:1; min-width:0; display:flex; flex-direction:column; }
-  .stage-col-label{ text-align:center; font-size:10.5px; font-weight:800; color:var(--mist-deep2); margin-bottom:6px; line-height:1.3; }
   .stage-col-track{
-    position:relative; flex:1;
+    position:relative; flex:1; min-width:0;
     background:#F3F1EC; border-radius:8px; overflow:visible;
   }
 
@@ -1122,8 +1127,8 @@
     { type: "展示", title: "Green Kirispot", org: "生徒会", place: "前庭", desc: "花壇に優美な花を咲かせよう" },
     { type: "仕入れ", title: "販売予定品目：カップ麺、クッキー等", org: "PTA", place: "被服室（現金のみ）", desc: "カップ麺、クッキーもあります",
       menu: [{n:"カップヌードル", p:200},{n:"ぷかぷかさんクッキー", p:100},{n:"ドリンク", p:100},{n:"ラスク", p:170}] },
-    { type: "案内", title: "広報スペース", org: "広報委員会", place: "会議室" },
-    { type: "案内", title: "生徒会インフォメーション", org: "生徒会", place: "会議室" },
+    { type: "案内", title: "広報スペース", org: "広報グループ", place: "会議室", desc: "中学生向けの広報スペースです。プチ説明会も行っています。" },
+    { type: "案内", title: "生徒会インフォメーション", org: "生徒会", place: "会議室", desc: "文化祭に関する全般的なご案内です。" },
     { type: "案内", title: "auPAYチャージブース", org: "実行委員会", place: "会議室", desc: "混雑が予想されます。事前のチャージがおすすめです。" }
   ];
 
@@ -1367,7 +1372,7 @@
           { start: '10:45', end: '11:45', title: 'ダンス部', limited: true }
         ]},
         { label: '🌳<br>中庭ステージ', items: [
-          { start: '9:45', end: '10:00', title: 'OP', limited: true },
+          { start: '9:30', end: '9:45', title: 'OP', limited: true },
           { start: '12:15', end: '12:45', title: 'ダンス部' },
           { start: '13:00', end: '13:30', title: '合唱部' },
           { start: '13:55', end: '14:45', title: '吹奏楽部' }
@@ -1428,7 +1433,14 @@
       markerHtml += '<div class="stage-marker-label" style="top:' + top + '%">' + mk.time + ' ' + mk.label + '</div>';
     });
 
-    // 各会場の列
+    // 会場ラベル（スケール枠の外・タイムバーとは別行）
+    let headerHtml = '<div class="stage-col-headers"><div class="stage-axis-spacer"></div>';
+    data.tracks.forEach(function(track){
+      headerHtml += '<div class="stage-col-header">' + track.label + '</div>';
+    });
+    headerHtml += '</div>';
+
+    // 各会場の列（見出しを含まないので、軸と高さの基準が完全に一致する）
     let colsHtml = '';
     data.tracks.forEach(function(track){
       let blocksHtml = '';
@@ -1443,10 +1455,10 @@
           '<span class="sb-title">' + item.title + '</span>' +
           '<span class="sb-time">' + item.start + '〜' + item.end + '</span></div>';
       });
-      colsHtml += '<div class="stage-col"><div class="stage-col-label">' + track.label + '</div><div class="stage-col-track">' + blocksHtml + '</div></div>';
+      colsHtml += '<div class="stage-col-track">' + blocksHtml + '</div>';
     });
 
-    let html = '<div class="stage-chart">' +
+    let html = headerHtml + '<div class="stage-chart">' +
       '<div class="stage-time-axis" style="height:' + chartHeight + 'px">' + axisHtml + '</div>' +
       '<div class="stage-cols" style="height:' + chartHeight + 'px">' + markerHtml + colsHtml + '</div>' +
       '</div>';
