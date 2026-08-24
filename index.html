@@ -794,6 +794,7 @@
       <div class="cat-tabs" id="cat-tabs">
         <div class="cat-tab active" data-cat="all">すべて</div>
         <div class="cat-tab" data-cat="food">🍡 飲食・グルメ</div>
+        <div class="cat-tab" data-cat="goods">🎁 製作・グッズ</div>
         <div class="cat-tab" data-cat="exhibit">🖼️ 展示</div>
         <div class="cat-tab" data-cat="haunted">👻 お化け屋敷・迷路</div>
         <div class="cat-tab" data-cat="stage">🎤 ステージ・演示</div>
@@ -1113,7 +1114,7 @@
     { type: "展示", title: "転生したら美術部だった件", org: "美術部", place: "美術室", desc: "作品展示" },
     { type: "調理・展示・仕入れ", title: "霧高庵", org: "華道・茶道部", place: "2年7組教室", desc: "花の展示と抹茶を販売しています。",
       menu: [{n:"お茶とお菓子", p:250}] },
-    { type: "調理", title: "海辺のアトリエ", org: "ボランティア同好会", place: "生物室", desc: "ブレスレットなどが作れるよ♡",
+    { type: "製作販売", title: "海辺のアトリエ", org: "ボランティア同好会", place: "生物室", desc: "ブレスレットなどが作れるよ♡",
       menu: [{n:"ストラップ", p:200},{n:"ブレスレット", p:200}] },
     { type: "展示", title: "内記監修写真展覧会", org: "写真部", place: "2年1組教室", desc: "部員が撮影した写真を展示します" },
     { type: "展示", title: "ハンカチの展示", org: "福祉委員会", place: "図書館", desc: "図書館に展示します！！" },
@@ -1132,10 +1133,11 @@
     if(type.indexOf('演示') !== -1) return 'stage';
     if(type.indexOf('案内') !== -1) return 'info';
     if(type.indexOf('展示') !== -1) return 'exhibit';
-    return 'food'; // 調理・準調理・仕入れ販売・仕入れ・製作販売・調理展示仕入れ 等
+    if(type.indexOf('製作販売') !== -1) return 'goods';
+    return 'food'; // 調理・準調理・仕入れ販売・仕入れ・調理展示仕入れ 等
   }
   function categoryEmoji(cat){
-    return { food:'🍡', exhibit:'🖼️', haunted:'👻', stage:'🎤', info:'📢' }[cat] || '✨';
+    return { food:'🍡', exhibit:'🖼️', haunted:'👻', stage:'🎤', info:'📢', goods:'🎁' }[cat] || '✨';
   }
 
   function menuHtml(menu){
@@ -1356,9 +1358,9 @@
     1: {
       start: 9 * 60, end: 16 * 60,
       markers: [
-        { time: '9:25', label: '開会式' },
+        { time: '9:30', label: '開会式' },
         { time: '12:00', label: '開場' },
-        { time: '14:55', label: '閉場' }
+        { time: '15:00', label: '閉場' }
       ],
       tracks: [
         { label: '🏟️<br>体育館', items: [
@@ -1379,7 +1381,7 @@
       start: 9 * 60, end: 15 * 60,
       markers: [
         { time: '10:00', label: '開場' },
-        { time: '14:55', label: '閉場・閉会式' }
+        { time: '15:00', label: '閉場・閉会式' }
       ],
       tracks: [
         { label: '🏟️<br>体育館', items: [
