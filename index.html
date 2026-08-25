@@ -649,7 +649,7 @@
     <a class="link" href="#teams">参加団体</a>
     <a class="link" href="#venue">会場</a>
     <a class="link" href="#access">アクセス</a>
-    <a class="link" href="#qr">QRコード</a>
+    <a class="link" href="#qr">２次元コード</a>
     <a class="link" href="#updates">お知らせ</a>
   </div>
 </nav>
@@ -722,7 +722,7 @@
         </div>
         <div class="notice-item">
           <span class="notice-icon">📸</span>
-          <div><span class="notice-label">撮影</span>校内で撮影した写真・動画のSNS等への投稿は固くお控えください。</div>
+          <div><span class="notice-label">撮影</span>一般の方の撮影はご遠慮ください。保護者の方は、お子さん（本校生徒）の撮影のみ可能です。撮影した写真・動画のSNS等への投稿は固くお控えください。</div>
         </div>
         <div class="notice-item">
           <span class="notice-icon">🚗</span>
@@ -804,6 +804,7 @@
         <div class="cat-tab" data-cat="haunted">👻 お化け屋敷・迷路</div>
         <div class="cat-tab" data-cat="stage">🎤 ステージ・演示</div>
         <div class="cat-tab" data-cat="info">📢 案内</div>
+        <div class="cat-tab" data-cat="rest">🍴 飲食スペース</div>
       </div>
       <div class="filter-count" id="filter-count"></div>
     </div>
@@ -942,7 +943,7 @@
         </div>
       </div>
 
-      <p class="venue-note">🚗 お車での来場、および学校敷地内への駐車はできません。公共交通機関をご利用ください。</p>
+      <p class="venue-note">🚗 お車での来場、および学校敷地内への駐車はできません。公共交通機関または徒歩でお越しください。</p>
       <p class="venue-note source-note">出典：<a href="https://www.pen-kanagawa.ed.jp/kirigaoka-h/access.html" target="_blank" rel="noopener">神奈川県立霧が丘高等学校 公式サイト「アクセス」</a></p>
     </div>
   </section>
@@ -950,14 +951,14 @@
   <section id="qr">
     <div class="sec-head">
       <div class="sec-eyebrow">ACCESS</div>
-      <h2 class="sec-title">QRコードでアクセス</h2>
-      <p class="sec-desc">このページのURLを読み取るQRコードです。ポスターやチラシに掲載してご利用ください。</p>
+      <h2 class="sec-title">２次元コードでアクセス</h2>
+      <p class="sec-desc">このページのURLを読み取る２次元コードです。ポスターやチラシに掲載してご利用ください。</p>
     </div>
     <div class="card qr-card">
-      <div id="qrcode" class="qr-box" aria-label="このページへのQRコード"></div>
+      <div id="qrcode" class="qr-box" aria-label="このページへの２次元コード"></div>
       <div class="qr-url" id="qr-url">読み込み中...</div>
       <button type="button" class="qr-dl" id="qr-download">画像として保存</button>
-      <p class="qr-hint">※ このQRコードは、いま開いているページのURLを自動で読み取って生成しています。公開用のURLで開けば、そのURLのQRコードになります。</p>
+      <p class="qr-hint">※ この２次元コードは、いま開いているページのURLを自動で読み取って生成しています。公開用のURLで開けば、そのURLの２次元コードになります。</p>
     </div>
   </section>
 
@@ -1125,11 +1126,15 @@
     { type: "展示", title: "ハンカチの展示", org: "福祉委員会", place: "図書館", desc: "図書館に展示します！！" },
     { type: "展示", title: "しおりの森", org: "図書委員会", place: "図書館", desc: "しおりの作成・配布" },
     { type: "展示", title: "Green Kirispot", org: "生徒会", place: "前庭", desc: "花壇に優美な花を咲かせよう" },
-    { type: "仕入れ", title: "販売予定品目：カップ麺、クッキー等", org: "PTA", place: "被服室（現金のみ）", desc: "カップ麺、クッキーもあります",
+    { type: "仕入れ", title: "霧高PTA", org: "PTA", place: "被服室（現金のみ）", desc: "カップ麺、クッキーもあります",
       menu: [{n:"カップヌードル", p:200},{n:"ぷかぷかさんクッキー", p:100},{n:"ドリンク", p:100},{n:"ラスク", p:170}] },
-    { type: "案内", title: "広報スペース", org: "広報グループ", place: "会議室", desc: "中学生向けの広報スペースです。プチ説明会も行っています。" },
+    { type: "案内", title: "広報スペース", org: "PTA広報", place: "会議室", desc: "中学生向けの広報スペースです。プチ説明会も行っています。" },
     { type: "案内", title: "生徒会インフォメーション", org: "生徒会", place: "会議室", desc: "文化祭に関する全般的なご案内です。" },
-    { type: "案内", title: "auPAYチャージブース", org: "実行委員会", place: "会議室", desc: "混雑が予想されます。事前のチャージがおすすめです。" }
+    { type: "案内", title: "auPAYチャージブース", org: "実行委員会", place: "会議室", desc: "混雑が予想されます。事前のチャージがおすすめです。" },
+    { type: "飲食スペース", title: "飲食スペース（選択A）", org: "実行委員会", place: "選択A", desc: "購入した飲食物をお召し上がりいただけます。" },
+    { type: "飲食スペース", title: "飲食スペース（選択B）", org: "実行委員会", place: "選択B", desc: "購入した飲食物をお召し上がりいただけます。" },
+    { type: "飲食スペース", title: "飲食スペース（選択C）", org: "実行委員会", place: "選択C", desc: "購入した飲食物をお召し上がりいただけます。" },
+    { type: "飲食スペース", title: "飲食スペース（保体教室）", org: "実行委員会", place: "保体教室", desc: "購入した飲食物をお召し上がりいただけます。" }
   ];
 
   // 種類 → ジャンル(検索・絞り込み用)への分類
@@ -1137,12 +1142,13 @@
     if(type.indexOf('お化け屋敷') !== -1) return 'haunted';
     if(type.indexOf('演示') !== -1) return 'stage';
     if(type.indexOf('案内') !== -1) return 'info';
+    if(type.indexOf('飲食スペース') !== -1) return 'rest';
     if(type.indexOf('展示') !== -1) return 'exhibit';
     if(type.indexOf('製作販売') !== -1) return 'goods';
     return 'food'; // 調理・準調理・仕入れ販売・仕入れ・調理展示仕入れ 等
   }
   function categoryEmoji(cat){
-    return { food:'🍡', exhibit:'🖼️', haunted:'👻', stage:'🎤', info:'📢', goods:'🎁' }[cat] || '✨';
+    return { food:'🍡', exhibit:'🖼️', haunted:'👻', stage:'🎤', info:'📢', goods:'🎁', rest:'🍴' }[cat] || '✨';
   }
 
   function menuHtml(menu){
