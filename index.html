@@ -100,8 +100,8 @@
   }
   .nav-inner{
     max-width:var(--max); margin:0 auto;
-    display:flex; align-items:center; gap:14px;
-    padding:12px 18px;
+    display:flex; align-items:center; justify-content:center; gap:9px;
+    padding:12px 10px;
     overflow-x:auto;
     scrollbar-width:none;
   }
@@ -119,10 +119,10 @@
   }
   .nav a.link:active, .nav a.link:focus-visible{border-bottom-color:var(--kiri-accent); color:#fff;}
   .font-toggle{
-    flex-shrink:0; margin-left:4px;
+    flex-shrink:0; margin-left:0;
     background:rgba(237,241,245,0.12); border:1px solid var(--mist-line);
-    color:#DFF6E4; border-radius:8px; padding:5px 9px;
-    font-family:'Zen Kaku Gothic New', sans-serif; font-size:11px; font-weight:700;
+    color:#DFF6E4; border-radius:8px; padding:5px 7px;
+    font-family:'Zen Kaku Gothic New', sans-serif; font-size:10.5px; font-weight:700;
     cursor:pointer; white-space:nowrap;
   }
   html.font-lg{ zoom:1.15; }
@@ -750,15 +750,13 @@
 
 <nav class="nav">
   <div class="nav-inner">
-    <span class="nav-logo">霧高祭</span>
     <a class="link" href="#notice">ご来場の方へ</a>
     <a class="link" href="#overview">概要</a>
     <a class="link" href="#schedule">日程</a>
-    <a class="link" href="#teams">参加団体</a>
+    <a class="link" href="#teams">企画</a>
     <a class="link" href="#venue">会場</a>
     <a class="link" href="#access">アクセス</a>
-    <a class="link" href="#qr">２次元コード</a>
-    <a class="link" href="#updates">お知らせ</a>
+    <a class="link" href="#qr">共有</a>
     <button type="button" class="font-toggle" id="font-toggle" aria-label="文字サイズを変更">文字A<span id="font-toggle-size">+</span></button>
   </div>
 </nav>
