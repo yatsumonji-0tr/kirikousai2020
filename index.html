@@ -847,7 +847,6 @@
     <div class="sec-head">
       <div class="sec-eyebrow">OVERVIEW</div>
       <h2 class="sec-title">開催概要</h2>
-      <p class="sec-desc">現時点で決まっている情報です。詳細は決まり次第このページで更新します。</p>
     </div>
     <div class="card card-taped">
       <div class="info-grid">
@@ -1067,8 +1066,7 @@
       <div id="qrcode" class="qr-box" aria-label="このページへの２次元コード"></div>
       <div class="qr-url" id="qr-url">読み込み中...</div>
       <button type="button" class="qr-dl" id="qr-download">画像として保存</button>
-      <button type="button" class="line-share" id="line-share">LINEで送る</button>
-      <p class="qr-hint">※ この２次元コードは、いま開いているページのURLを自動で読み取って生成しています。公開用のURLで開けば、そのURLの２次元コードになります。</p>
+      <button type="button" class="line-share" id="share-btn">共有する</button>
     </div>
   </section>
 
@@ -1838,9 +1836,17 @@
       link.click();
     });
 
-    document.getElementById('line-share').addEventListener('click', function(){
-      const shareUrl = 'https://social-plugins.line.me/lineit/share?url=' + encodeURIComponent(url) + '&text=' + encodeURIComponent('霧高祭 2026 特設ページ');
-      window.open(shareUrl, '_blank', 'noopener');
+    const shareBtn = document.getElementById('share-btn');
+    shareBtn.addEventListener('click', function(){
+      if(navigator.share){
+        navigator.share({ title: '霧高祭 2026 特設ページ', text: '霧高祭 2026 特設ページ', url: url }).catch(function(){});
+      } else if(navigator.clipboard){
+        navigator.clipboard.writeText(url).then(function(){
+          const original = shareBtn.textContent;
+          shareBtn.textContent = 'リンクをコピーしました！';
+          setTimeout(function(){ shareBtn.textContent = original; }, 2000);
+        });
+      }
     });
   })();
 </script>
