@@ -864,7 +864,7 @@
     <div class="sec-head">
       <div class="sec-eyebrow">SCHEDULE</div>
       <h2 class="sec-title">タイムスケジュール</h2>
-      <p class="sec-desc">来場予定の方は一般公開の時間内にお越しください。体育館・中庭・視聴覚室のステージ企画もあわせて掲載しています。</p>
+      <p class="sec-desc">来場予定の方は一般公開の時間内にお越しください。体育館・視聴覚室のステージ企画もあわせて掲載しています。</p>
     </div>
 
     <div class="day-tabs">
@@ -882,7 +882,7 @@
       <div id="stage-bands-1" class="stage-day-panel active" data-sday="1"></div>
       <div id="stage-bands-2" class="stage-day-panel" data-sday="2"></div>
 
-      <p class="venue-note">※ 雨天の場合、中庭で行う予定の公演は、同時刻に体育館で実施します。</p>
+      <p class="venue-note">☔ 本日は雨天のため、中庭で予定していたステージ企画はすべて体育館に会場を変更して実施します（時間は変更ありません）。</p>
     </div>
   </section>
 
@@ -932,7 +932,7 @@
     <div id="grade-club" class="grade-block">
       <div class="grade-title">部活動・委員会等</div>
       <div id="club-grid" class="chip-grid"></div>
-      <div class="club-note">中庭で調理企画を行う1-1・2-1・2-3・2-7の教室は、部活動・委員会の展示会場として使用されます。</div>
+      <div class="club-note">ピロティで調理企画を行う1-1・2-1・2-3・2-7の教室は、部活動・委員会の展示会場として使用されます。</div>
     </div>
     <div class="no-result" id="no-result">
       <svg width="42" height="57" viewBox="0 0 140 190" style="margin-bottom:8px;">
@@ -986,10 +986,10 @@
         <span><span class="dot bridge"></span>中央棟で接続</span>
       </div>
 
-      <button type="button" class="outdoor-btn" id="outdoor-btn">屋外・特別エリアの企画を見る（中庭・体育館 等）</button>
+      <button type="button" class="outdoor-btn" id="outdoor-btn">屋外・特別エリアの企画を見る（ピロティ・体育館 等）</button>
 
       <p class="venue-note">4階・5階は北棟・南棟それぞれ独立しており、中央棟を経由した行き来はできません。</p>
-      <p class="venue-note">中庭は調理系企画（1-1・2-1・2-3・2-7）の販売スペース兼、ダンス部・合唱部などのステージ会場としても使用されます。</p>
+      <p class="venue-note">☔ 本日は雨天のため、調理系企画（1-1・2-1・2-3・2-7）はピロティで販売しています。ステージ企画もすべて体育館で実施します。</p>
 
       <div class="floor-detail" id="floor-detail">
         <div class="fd-placeholder" id="fd-placeholder">
@@ -1212,7 +1212,7 @@
   // ---- 参加団体：企画データ ----
   // クラスの企画が決まったら、ここに追加・更新してください（キーは "学年-組"）
   const teamEntries = {
-    "1-1": { type: "調理",       title: "爆裂フランクフルト", place: "中庭", desc: "本場ドイツ風フランクフルト",
+    "1-1": { type: "調理",       title: "爆裂フランクフルト", place: "ピロティ", desc: "本場ドイツ風フランクフルト",
       menu: [{n:"フランクフルト", p:150}] },
     "1-2": { type: "仕入れ販売", title: "にこにこベーカリー☺", place: "1年2組", desc: "パンを仕入れて売ります！",
       menu: [{n:"牛すじカレー", p:250},{n:"めんたいポテト", p:250},{n:"ベーコンエピ", p:250},{n:"メロンパン", p:250},{n:"発酵バターのクロワッサン", p:300}] },
@@ -1228,17 +1228,17 @@
     "1-9": { type: "仕入れ販売", title: "いちのきゅうり", place: "1年9組", desc: "きゅうりとラムネを売ってます！",
       menu: [{n:"きゅうり一本漬", p:250},{n:"きゅうり一本漬（キムチ味）", p:250},{n:"ラムネ", p:120}] },
 
-    "2-1": { type: "調理",       title: "3度の餃子と秋田が好き", place: "中庭", desc: "焼きたての餃子をご賞味あれ！",
+    "2-1": { type: "調理",       title: "3度の餃子と秋田が好き", place: "ピロティ", desc: "焼きたての餃子をご賞味あれ！",
       menu: [{n:"餃子", p:150}] },
     "2-2": { type: "お化け屋敷・迷路", title: "ONOT", place: "2年2組", desc: "”それ”が見えたら、終わり。" },
-    "2-3": { type: "調理",       title: "青春の鉄板", place: "中庭", desc: "美味しい焼きそばを売るゾ！",
+    "2-3": { type: "調理",       title: "青春の鉄板", place: "ピロティ", desc: "美味しい焼きそばを売るゾ！",
       menu: [{n:"焼きそば", p:200}] },
     "2-4": { type: "仕入れ販売", title: "塔の上のケンツェル", place: "2年4組", desc: "冷たい缶ジュース売ってます！",
       menu: [{n:"コカ・コーラ", p:70},{n:"ファンタグレープ", p:70},{n:"Qooオレンジ", p:70},{n:"カルピスウオーター", p:70},{n:"三ツ矢サイダー", p:70}] },
     "2-5": { type: "展示",       title: "Queen of hearts games", place: "2年5組", desc: "カジノに勝ってチップを集めよう" },
     "2-6": { type: "仕入れ販売", title: "きっさ26", place: "2年6組", desc: "可愛いメイドがおもてなし♡",
       menu: [{n:"プリン", p:80},{n:"ゼリー", p:80},{n:"リンゴジュース（なっちゃん）", p:140},{n:"緑茶（伊右衛門）", p:100},{n:"ジンジャーエール", p:110}] },
-    "2-7": { type: "調理",       title: "七貴族", place: "中庭", desc: "おいしい焼き鳥",
+    "2-7": { type: "調理",       title: "七貴族", place: "ピロティ", desc: "おいしい焼き鳥",
       menu: [{n:"もも・とりかわ（タレ）", p:120},{n:"もも・とりかわ（塩）", p:120}] },
     "2-8": { type: "展示",       title: "君の心にbull's eye", place: "2年8組", desc: "ダーツ・ボウリング" },
     "2-9": { type: "仕入れ販売", title: "パリピン堂", place: "2年9組", desc: "パリピっぽい店員が和菓子を売る",
@@ -1265,10 +1265,10 @@
 
   // 部活動・委員会等の企画データ
   const clubEntries = [
-    { type: "演示", title: "Let's show time", org: "ダンス部", place: "中庭・体育館", desc: "ダンスで文化祭を盛り上げます！" },
-    { type: "演示", title: "KIRI☆WINDS CONCERT", org: "吹奏楽部", place: "中庭", desc: "霧吹で青春の音楽を奏でます！" },
+    { type: "演示", title: "Let's show time", org: "ダンス部", place: "体育館", desc: "ダンスで文化祭を盛り上げます！" },
+    { type: "演示", title: "KIRI☆WINDS CONCERT", org: "吹奏楽部", place: "体育館", desc: "霧吹で青春の音楽を奏でます！" },
     { type: "演示", title: "K-K-FES", org: "軽音楽部", place: "視聴覚室・体育館", desc: "文化祭でライブをします。" },
-    { type: "演示", title: "Kiri Quintet -キリテット-", org: "合唱部", place: "中庭・視聴覚室", desc: "J-POPや合唱曲を歌います" },
+    { type: "演示", title: "Kiri Quintet -キリテット-", org: "合唱部", place: "体育館・視聴覚室", desc: "J-POPや合唱曲を歌います" },
     { type: "展示", title: "カネコライフレンダ", org: "総合映像研究部", place: "社会科教室", desc: "金子先生を救う謎解き脱出ゲーム" },
     { type: "調理", title: "かてけん和み亭", org: "家庭科研究部", place: "選択D教室", desc: "うどんで運どんUP！",
       menu: [{n:"豚しゃぶうどん", p:200},{n:"かてけんうどん", p:150}] },
@@ -1623,10 +1623,8 @@
       ],
       tracks: [
         { label: '🏟️<br>体育館', items: [
-          { start: '10:45', end: '11:45', title: 'ダンス部', limited: true }
-        ]},
-        { label: '🌳<br>中庭ステージ', items: [
           { start: '9:30', end: '9:45', title: 'OP', limited: true },
+          { start: '10:45', end: '11:45', title: 'ダンス部', limited: true },
           { start: '12:15', end: '12:45', title: 'ダンス部' },
           { start: '13:00', end: '13:30', title: '合唱部' },
           { start: '13:55', end: '14:45', title: '吹奏楽部' }
@@ -1645,11 +1643,9 @@
       tracks: [
         { label: '🏟️<br>体育館', items: [
           { start: '10:20', end: '11:20', title: '軽音楽部' },
-          { start: '13:45', end: '14:45', title: 'ダンス部' }
-        ]},
-        { label: '🌳<br>中庭ステージ', items: [
           { start: '11:30', end: '12:00', title: 'ダンス部' },
-          { start: '12:30', end: '13:20', title: '吹奏楽部' }
+          { start: '12:30', end: '13:20', title: '吹奏楽部' },
+          { start: '13:45', end: '14:45', title: 'ダンス部' }
         ]},
         { label: '🎧<br>視聴覚室', items: [
           { start: '10:30', end: '11:00', title: '合唱部' },
